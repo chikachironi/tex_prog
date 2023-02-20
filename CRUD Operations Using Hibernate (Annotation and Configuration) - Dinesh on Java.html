@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/ -->
+<html class="js" lang="en-US"><head itemscope="" itemtype="http://schema.org/WebSite"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://www.dineshonjava.com/wp-content/uploads/2017/08/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="https://i0.wp.com/www.dineshonjava.com/wp-content/uploads/2017/08/favicon.png?fit=177%2C106&amp;ssl=1">        
+                    <link rel="apple-touch-icon-precomposed" href="https://i0.wp.com/www.dineshonjava.com/wp-content/uploads/2017/08/favicon.png?fit=177%2C106&amp;ssl=1">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+                                    <link rel="prefetch" href="https://www.dineshonjava.com/">
+                <link rel="prerender" href="https://www.dineshonjava.com/">
+                    
+        <meta itemprop="name" content="Dinesh on Java">
+        <meta itemprop="url" content="https://www.dineshonjava.com">
+
+                                                <meta itemprop="creator accountablePerson" content="Dinesh Rajput">
+                    	<link rel="pingback" href="https://www.dineshonjava.com/xmlrpc.php">
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<script type="text/javascript" async="" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/analytics.js.Без названия"></script><script type="text/javascript" async="" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/linkid.js.Без названия"></script><script async="" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/analytics.js.Без названия"></script><script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script>
+	<!-- This site is optimized with the Yoast SEO plugin v19.8 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java</title>
+	<link rel="canonical" href="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java">
+	<meta property="og:description" content="In this section, you will learn how to develop a CRUD application using hibernate annotation. Follows the following steps for developing the CRUD application in hibernate annotation. Step 1: Create Domain Entity Class Student.java package com.sdnext.hibernate.tutorial.dto; import java.io.Serializable; import javax.persistence.Column; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType; import javax.persistence.Id; @Entity @Table(name=&quot;STUDENT&quot;) public class Student implements Serializable { /** * serialVersionUID */ private static final long serialVersionUID = 8633415090390966715L; @Id @Column(name=&quot;ID&quot;) @GeneratedValue(strategy=GenerationType.AUTO) private int id; @Column(name=&quot;STUDENT_NAME&quot;) private String studentName; @Column(name=&quot;ROLL_NUMBER&quot;) private int rollNumber; @Column(name=&quot;COURSE&quot;) private String course; public int getId() { return id; } public void setId(int id) { this.id = id; } public">
+	<meta property="og:url" content="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/">
+	<meta property="og:site_name" content="Dinesh on Java">
+	<meta property="article:publisher" content="https://www.facebook.com/thedineshonjava/">
+	<meta property="article:modified_time" content="2017-12-15T18:20:02+00:00">
+	<meta property="og:image" content="https://www.dineshonjava.com/wp-content/uploads/2017/04/create.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@dineshonjava">
+	<meta name="twitter:label1" content="Est. reading time">
+	<meta name="twitter:data1" content="6 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/","url":"https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/","name":"CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java","isPartOf":{"@id":"https://www.dineshonjava.com/#website"},"primaryImageOfPage":{"@id":"https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/#primaryimage"},"image":{"@id":"https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/#primaryimage"},"thumbnailUrl":"https://www.dineshonjava.com/wp-content/uploads/2017/04/create.jpg","datePublished":"2017-04-24T19:30:00+00:00","dateModified":"2017-12-15T18:20:02+00:00","breadcrumb":{"@id":"https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/#primaryimage","url":"https://i0.wp.com/www.dineshonjava.com/wp-content/uploads/2017/04/create.jpg?fit=691%2C198&ssl=1","contentUrl":"https://i0.wp.com/www.dineshonjava.com/wp-content/uploads/2017/04/create.jpg?fit=691%2C198&ssl=1","width":691,"height":198},{"@type":"BreadcrumbList","@id":"https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.dineshonjava.com/"},{"@type":"ListItem","position":2,"name":"Hibernate","item":"https://www.dineshonjava.com/hibernate/"},{"@type":"ListItem","position":3,"name":"CRUD Operations Using Hibernate (Annotation and Configuration)"}]},{"@type":"WebSite","@id":"https://www.dineshonjava.com/#website","url":"https://www.dineshonjava.com/","name":"Dinesh on Java","description":"Learn Core and Advanced Java, Spring with us step by step for beginner","publisher":{"@id":"https://www.dineshonjava.com/#/schema/person/14903e926789054cdd40e054cb6fca61"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.dineshonjava.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":["Person","Organization"],"@id":"https://www.dineshonjava.com/#/schema/person/14903e926789054cdd40e054cb6fca61","name":"Dinesh Rajput","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.dineshonjava.com/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/60c61015076fd8f627850df184a331dd?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/60c61015076fd8f627850df184a331dd?s=96&d=mm&r=g","caption":"Dinesh Rajput"},"logo":{"@id":"https://www.dineshonjava.com/#/schema/person/image/"},"description":"Dinesh Rajput is the chief editor of a website Dineshonjava, a technical blog dedicated to the Spring and Java technologies. It has a series of articles related to Java technologies. Dinesh has been a Spring enthusiast since 2008 and is a Pivotal Certified Spring Professional, an author of a book Spring 5 Design Pattern, and a blogger. He has more than 10 years of experience with different aspects of Spring and Java design and development. His core expertise lies in the latest version of Spring Framework, Spring Boot, Spring Security, creating REST APIs, Microservice Architecture, Reactive Pattern, Spring AOP, Design Patterns, Struts, Hibernate, Web Services, Spring Batch, Cassandra, MongoDB, and Web Application Design and Architecture. He is currently working as a technology manager at a leading product and web development company. He worked as a developer and tech lead at the Bennett, Coleman &amp; Co. Ltd and was the first developer in his previous company, Paytm. Dinesh is passionate about the latest Java technologies and loves to write technical blogs related to it. He is a very active member of the Java and Spring community on different forums. When it comes to the Spring Framework and Java, Dinesh tops the list!","sameAs":["https://www.dineshrajput.com","https://www.facebook.com/thedineshonjava/","https://twitter.com/dineshonjava"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="amphtml" href="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/amp/"><meta name="generator" content="AMP for WP 1.0.77.51"><link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="dns-prefetch" href="https://v0.wordpress.com/">
+<link rel="dns-prefetch" href="https://i0.wp.com/">
+<link rel="dns-prefetch" href="https://c0.wp.com/">
+<link rel="alternate" type="application/rss+xml" title="Dinesh on Java » Feed" href="https://www.dineshonjava.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Dinesh on Java » Comments Feed" href="https://www.dineshonjava.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Dinesh on Java » CRUD Operations Using Hibernate (Annotation and Configuration) Comments Feed" href="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/feed/">
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.dineshonjava.com\/wp-includes\/js\/wp-emoji-release.min.js"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script><script src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/wp-emoji-release.min.js.Без названия" type="text/javascript" defer=""></script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/style.min.css" type="text/css" media="all">
+<style id="wp-block-library-inline-css" type="text/css">
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel="stylesheet" id="mediaelement-css" href="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/mediaelementplayer-legacy.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-mediaelement-css" href="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/wp-mediaelement.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="quads-style-css-css" href="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/blocks.style.build.css" type="text/css" media="all">
+<style id="global-styles-inline-css" type="text/css">
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel="stylesheet" id="wp-post-navigation-style-css" href="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="socialme-stylesheet-css" href="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/style(1).css" type="text/css" media="all">
+<style id="socialme-stylesheet-inline-css" type="text/css">
+
+        body {background-color:#ffffff;background-image:url(https://www.dineshonjava.com/wp-content/themes/mts_socialme/images/nobg.png);}
+
+        #site-header .header-wrap, .navigation ul ul li, .mobile-menu-active .navigation.mobile-menu-wrapper, .mts-author-box-top { background: #4e9359; }
+
+        #site-footer { background: #333333; }
+
+        #primary-navigation .navigation a, .navigation ul ul { border-color: #4e9359; }
+
+        #commentform input#submit:hover, #load-posts a:hover, .owl-prev, .owl-next, .widget.widget_mts_users_count_widget { 
+            background-color: #63b175; 
+        }
+
+        a, .post-info a, .searchbox-open .searchbox-icon, .searchbox-open .searchbox-submit, .searchbox-icon:hover i, #comments .fn, .widget.widget_pages a:after, .copyrights a { 
+            color: #63b175; 
+        }
+        .navigation li.menu-item-has-children:hover > a:after, #primary-navigation li a:hover {
+            color: #63b175!important;    
+        }
+
+        .widget.widget_mts_users_count_widget { border-color: #63b175!important; }
+
+        .featured-stories-tabs .tabs .active a, .pagination .nav-previous a, .pagination .nav-next a, .widget li:before, #move-to-top:hover, #commentform input#submit, #load-posts a, .currenttext, #site-footer .widget .wpt_widget_content .tab_title.selected a, #site-footer .widget .wp_review_tab_widget_content .tab_title.selected a, .page-numbers.current, .pagination a:hover, .pagination .nav-previous a:hover, .pagination .nav-next a:hover, #wpmm-megamenu .review-total-only, #wpmm-megamenu.wpmm-light-scheme .wpmm-posts .wpmm-pagination a, .latestPost .review-type-circle.latestPost-review-wrapper, .latestPost-review-wrapper, .bypostauthor .fn:after, thead, .owl-prev:hover, .owl-next:hover, .widget-slider .slide-caption, .pace .pace-progress, .contact-form input[type='submit'], .widget.mts-post-new, .mts-login-form #wp-submit, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt { background-color:#1daf3f; color: #fff; 
+        }
+        a:hover, .latestPost .title a:hover, .widget_nav_menu li:hover > a, .widget li.active > .toggle-caret, .thumb-container .owl-prev:hover, .thumb-container .owl-next:hover, .featured-stories-tabs .tabs li a:hover, .copyrights nav li a:hover, .widget.widget_pages a:after, .post-footer .vote a:hover, .post-footer .vote.active a, .tags a:hover, .login-menu a:hover, .post-footer .mts-points a:hover, .widget .post-info .thecomment:hover, .widget li a:hover, .widget .wpt_widget_content a:hover, .widget .wp_review_tab_widget_content a:hover, .post-info a:hover, .thecategory a:hover, .article-footer a:hover, .tagcloud a:hover, .fn a, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover { 
+            color:#1daf3f; 
+        }
+        .featured-stories-tabs .tabs li.active a, .post-footer .thecategory a:hover, .tags a:hover, .post-footer .vote a:hover, .post-footer .vote.active a, .tagcloud a:hover, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .pagination .nav-previous a, .pagination .nav-next a, .widget.mts-post-new, .mts-login-form #wp-submit {
+            border: 1px solid #1daf3f;
+        }
+        .latestPost:hover, .article-footer .thecategory a:hover, .article-footer .readMore a:hover {
+            border: 1px solid rgba(29, 175, 63, 0.3);
+        }
+        #thumb .owl-item.active.current img, blockquote, .latestPost .quotes {
+            border-bottom: 4px solid #1daf3f;
+        }
+        .article { float: left } .sidebar.c-4-12.sidebar-left, .woocommerce .sidebar.c-4-12 { float: right }
+        
+        .bypostauthor > div .fn:after { content: "Author"; padding: 1px 10px; color: #FFF; border-radius: 3px; font-size: 12px; margin: 0 4px; }
+        
+        
+        
+        #primary-navigation { bottom: 0!important; } header .searchbox { display: block!important; }
+        #header { float: right; } 
+        #primary-navigation { float: left; position: relative } 
+        
+        .sidebar-left-article { width: 100%; max-width: 1170px; } .article { width: 65.81%;
+         max-width: 770px; } .sidebar.c-4-12.sidebar-left { width: 31.62%; max-width: 370px; } .thumb-container { max-width: 680px; padding: 0 25px; } .thumb-container .owl-prev, .thumb-container .owl-next { font-size: 40px; bottom: 20px; } @media screen and (max-width: 960px) { .thumb-container .owl-prev, .thumb-container .owl-next { font-size: 28px; bottom: 4px; } } @media screen and (max-width: 800px) { .thumb-container .owl-prev, .thumb-container .owl-next { bottom: -6px; } } @media screen and (max-width: 640px) { .thumb-container .owl-prev, .thumb-container .owl-next { bottom: 4px; } }
+            @media screen and (max-width: 480px) { .thumb-container .owl-prev, .thumb-container .owl-next { bottom: -6px; } }
+        
+            
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/owl.carousel.css" type="text/css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="responsive-css" href="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/responsive.css" type="text/css" media="all">
+<link rel="stylesheet" id="social-logos-css" href="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/social-logos.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/jetpack.css" type="text/css" media="all">
+<style id="quads-styles-inline-css" type="text/css">
+
+    .quads-location ins.adsbygoogle {
+        background: transparent !important;
+    }
+    
+    .quads.quads_ad_container { display: grid; grid-template-columns: auto; grid-gap: 10px; padding: 10px; }
+    .grid_image{animation: fadeIn 0.5s;-webkit-animation: fadeIn 0.5s;-moz-animation: fadeIn 0.5s;
+        -o-animation: fadeIn 0.5s;-ms-animation: fadeIn 0.5s;}
+    .quads-ad-label { font-size: 12px; text-align: center; color: #333;}
+    .quads-text-around-ad-label-text_around_left {
+        width: 50%;
+        float: left;
+    }
+    .quads-text-around-ad-label-text_around_right {
+        width: 50%;
+        float: right;
+    }
+    .quads-popupad {
+        position: fixed;
+        top: 0px;
+        width: 68em;
+        height: 100em;
+        background-color: rgba(0,0,0,0.6);
+        z-index: 999;
+        max-width: 100em !important;
+        margin: 0 auto;
+    }
+    .quads.quads_ad_container_ {
+        position: fixed;
+        top: 40%;
+        left: 36%;
+    }
+    #btn_close{
+		background-color: #fff;
+		width: 25px;
+		height: 25px;
+		text-align: center;
+		line-height: 22px;
+		position: absolute;
+		right: -10px;
+		top: -10px;
+		cursor: pointer;
+		transition: all 0.5s ease;
+		border-radius: 50%;
+	}
+    #btn_close_video{
+		background-color: #fff;
+		width: 25px;
+		height: 25px;
+		text-align: center;
+		line-height: 22px;
+		position: absolute;
+		right: -10px;
+		top: -10px;
+		cursor: pointer;
+		transition: all 0.5s ease;
+		border-radius: 50%;
+	}
+    @media screen and (max-width: 480px) {
+        .quads.quads_ad_container_ {
+            left: 10px;
+        }
+    }
+    
+    .quads-video {
+        position: fixed;
+        bottom: 0px;
+        z-index: 9999999;
+    }
+    quads_ad_container_video{
+        max-width:220px;
+    }
+    .quads_click_impression { display: none;}
+    
+    .quads-sticky {
+        width: 100% !important;
+        background-color: hsla(0,0%,100%,.7);
+        position: fixed;
+        max-width: 100%!important;
+        bottom:0;
+        margin:0;
+        text-align: center;
+    }.quads-sticky .quads-location {
+        text-align: center;
+    }.quads-sticky .wp_quads_dfp {
+        display: contents;
+    }
+    a.quads-sticky-ad-close {
+        background-color: #fff;
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        line-height: 22px;
+        position: absolute;
+        right: 0px;
+        top: -15px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        border-radius: 50%;
+    }
+    
+</style>
+<!-- This site uses the Google Analytics by MonsterInsights plugin v6.2.0 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	var disableStr = 'ga-disable-UA-47157990-1';
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-47157990-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('require', 'displayfeatures');
+	__gaTracker('require', 'linkid', 'linkid.js');
+	__gaTracker('send','pageview');
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+<script type="text/javascript" id="monsterinsights-lite-frontend-script-js-extra">
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","is_debug_mode":"false","download_extensions":"doc,exe,js,pdf,ppt,tgz,zip,xls","inbound_paths":"","home_url":"https:\/\/www.dineshonjava.com","track_download_as":"event","internal_label":"int","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/frontend.min.js.Без названия" id="monsterinsights-lite-frontend-script-js"></script>
+<script type="text/javascript" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/jquery.min.js.Без названия" id="jquery-core-js"></script>
+<script type="text/javascript" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/jquery-migrate.min.js.Без названия" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="customscript-js-extra">
+/* <![CDATA[ */
+var mts_customscript = {"responsive":"1","nav_menu":"primary","ajax_url":"https:\/\/www.dineshonjava.com\/wp-admin\/admin-ajax.php","like":""};
+/* ]]> */
+</script>
+<script type="text/javascript" async="async" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/customscript.js.Без названия" id="customscript-js"></script>
+<link rel="https://api.w.org/" href="https://www.dineshonjava.com/wp-json/"><link rel="alternate" type="application/json" href="https://www.dineshonjava.com/wp-json/wp/v2/pages/709"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.dineshonjava.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.dineshonjava.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 6.0.2">
+<link rel="shortlink" href="https://wp.me/P94H1c-br">
+<link rel="alternate" type="application/json+oembed" href="https://www.dineshonjava.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dineshonjava.com%2Fhibernate%2Fcrud-operations-using-hibernate-3%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.dineshonjava.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dineshonjava.com%2Fhibernate%2Fcrud-operations-using-hibernate-3%2F&amp;format=xml">
+<style type="text/css">
+					.wp-post-navigation a{
+					font-family: Source Sans Pro;
+font-size: 16px;
+background-color: #1daf3f;
+padding: 10px 20px;
+padding-top: 5px;
+color: #fff;
+width: auto;
+text-decoration: none;
+line-height: 30px;
+font-weight: bold;
+					}
+				 </style><script type="text/javascript">document.cookie = 'quads_browser_width='+screen.width;</script><style>img#wpstats{display:none}</style>
+	<link href="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#logo a { font-family: 'Signika Negative'; font-weight: 300; font-size: 26px; color: #ffffff; }
+#primary-navigation a, .login-menu a { font-family: 'Signika Negative', Courier, monospace; font-weight: 300; font-size: 16px; color: #ffffff; }
+.latestPost .title a { font-family: 'Signika Negative'; font-weight: normal; font-size: 25px; color: #000000; }
+.single-title { font-family: 'Signika Negative'; font-weight: normal; font-size: 30px; color: #000000; }
+body { font-family: 'Open Sans'; font-weight: normal; font-size: 14px; color: #000000; }
+.widget h3, .widget .wpt_widget_content .tab_title.selected a, .widget .wpt_widget_content .tab_title a { font-family: 'Signika Negative'; font-weight: normal; font-size: 19px; color: #1daf3f; }
+.widget { font-family: 'Open Sans'; font-weight: normal; font-size: 15px; color: #000000; }
+#site-footer .widget h3 { font-family: 'Signika Negative'; font-weight: normal; font-size: 22px; color: #000000; }
+#site-footer .widget, #site-footer { font-family: 'Open Sans'; font-weight: normal; font-size: 14px; color: #000000; }
+h1 { font-family: 'Signika Negative'; font-weight: normal; font-size: 30px; color: #000000; }
+h2 { font-family: 'Signika Negative'; font-weight: normal; font-size: 28px; color: #000000; }
+h3 { font-family: 'Signika Negative'; font-weight: normal; font-size: 26px; color: #000000; }
+h4 { font-family: 'Signika Negative'; font-weight: normal; font-size: 24px; color: #000000; }
+h5 { font-family: 'Signika Negative'; font-weight: normal; font-size: 22px; color: #000000; }
+h6 { font-family: 'Signika Negative'; font-weight: normal; font-size: 20px; color: #000000; }
+</style>
+<link rel="icon" href="https://i0.wp.com/www.dineshonjava.com/wp-content/uploads/2017/08/favicon.png?fit=32%2C19&amp;ssl=1" sizes="32x32">
+<link rel="icon" href="https://i0.wp.com/www.dineshonjava.com/wp-content/uploads/2017/08/favicon.png?fit=177%2C106&amp;ssl=1" sizes="192x192">
+<link rel="apple-touch-icon" href="https://i0.wp.com/www.dineshonjava.com/wp-content/uploads/2017/08/favicon.png?fit=177%2C106&amp;ssl=1">
+<meta name="msapplication-TileImage" content="https://i0.wp.com/www.dineshonjava.com/wp-content/uploads/2017/08/favicon.png?fit=177%2C106&amp;ssl=1">
+<style type="text/css" id="wp-custom-css">/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/</style>	<!--
+	<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+	<script data-cfasync="false" type="text/javascript" src="//www.increaserev.com/ads/dfpres/res.js"></script>
+	-->
+	<!--script async src="//increaserev.com/ads/dfpres/mcm.js"></script--> 
+	<!--script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+      window.googletag = window.googletag || {cmd: []};
+      var interstitialSlot, staticSlot;
+      googletag.cmd.push(function() {
+        interstitialSlot = googletag.defineOutOfPageSlot(
+            '/424536528,22535021215/1515303_ir_interstitial_gt',
+            googletag.enums.OutOfPageFormat.INTERSTITIAL);
+        if (interstitialSlot) {
+          interstitialSlot.addService(googletag.pubads());
+        }
+        staticSlot = googletag.defineSlot(
+            '/424536528,22535021215/1506806_ir_300x250_gt-1', ['fluid', [250, 250], [300, 250]], 'div-gpt-ad-1645195058991-0')
+          .addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+      });
+    </script>
+	<script> var IR_Tag="c";</script-->
+</head>
+<body id="blog" class="page-template-default page page-id-709 page-child parent-pageid-3017 main" itemscope="" itemtype="http://schema.org/WebPage"><a id="move-to-top" class="animate filling" href="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/#blog"><i class="fa fa-angle-double-up"></i></a>       
+	
+	<div class="main-container">
+	    <header id="site-header" role="banner" itemscope="" itemtype="http://schema.org/WPHeader">  
+	        	    	    <div class="clear" id="catcher" style="height: 59px;"></div>
+	            <div class="header-wrap sticky-navigation sticky-navigation-active">
+		        		            <div class="container">
+						<div id="header">
+										     				<div id="primary-navigation" role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+								<a href="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/#" id="pull" class="toggle-mobile-menu"><i class="fa fa-bars"></i></a>
+																	<nav class="navigation clearfix mobile-menu-wrapper">
+																					<ul id="menu-header-menu" class="menu clearfix toggle-menu"><li id="menu-item-2662" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2662 toggle-menu-item-parent"><a href="https://www.dineshonjava.com/core-java-baby-step-to-be-best-java-ian/"><i class="fa fa-coffee"></i> Core Java</a>
+<ul class="sub-menu toggle-submenu" style="display: none;">
+	<li id="menu-item-2953" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2953"><a href="https://www.dineshonjava.com/core-java-baby-step-to-be-best-java-ian/">Core Java</a></li>
+	<li id="menu-item-2880" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2880"><a href="https://www.dineshonjava.com/category/ocpjp/">Java 8 Certification</a></li>
+	<li id="menu-item-2881" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2881"><a href="https://www.dineshonjava.com/core-java-interview-questions/">Interview Q/A</a></li>
+</ul>
+<span class="toggle-caret"><i class="fa fa-plus"></i></span></li>
+<li id="menu-item-2866" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2866"><a href="https://www.dineshonjava.com/spring-boot-tutorial/">Spring Boot</a></li>
+<li id="menu-item-2668" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2668 toggle-menu-item-parent"><a href="https://www.dineshonjava.com/spring-tutorial/"><i class="fa fa-leaf"></i> Spring</a>
+<ul class="sub-menu toggle-submenu" style="display: none;">
+	<li id="menu-item-2683" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2683"><a href="https://www.dineshonjava.com/spring-tutorial/">Spring Core</a></li>
+	<li id="menu-item-2867" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2867"><a href="https://www.dineshonjava.com/spring-aop-tutorial-with-example-aspect-advice-pointcut-joinpoint/">Spring AOP</a></li>
+	<li id="menu-item-2868" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2868"><a href="https://www.dineshonjava.com/spring-web-mvc-framework-chapter-38/">Spring MVC</a></li>
+	<li id="menu-item-2869" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2869"><a href="https://www.dineshonjava.com/spring-security-take-baby-step-to-secure/">Spring Security</a></li>
+	<li id="menu-item-2684" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2684"><a href="https://www.dineshonjava.com/microservices-with-spring-boot/">Microservices</a></li>
+	<li id="menu-item-2870" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2870"><a href="https://www.dineshonjava.com/spring-4-tutorials-step-to-new-spring/">Spring 4</a></li>
+	<li id="menu-item-2871" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2871"><a href="https://www.dineshonjava.com/spring-5/">Spring 5</a></li>
+	<li id="menu-item-2872" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2872"><a href="https://www.dineshonjava.com/spring-batch-process-with-example/">Spring Batch</a></li>
+	<li id="menu-item-2882" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2882"><a href="https://www.dineshonjava.com/spring-mobile-tutorial/">Spring Mobile</a></li>
+	<li id="menu-item-2883" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2883"><a href="https://www.dineshonjava.com/spring-hateoas-hypermedia-driven-restful-web-service/">Spring HATEOAS</a></li>
+</ul>
+<span class="toggle-caret"><i class="fa fa-plus"></i></span></li>
+<li id="menu-item-2945" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2945 toggle-menu-item-parent"><a href="https://www.dineshonjava.com/hibernate-3-on-baby-steps/"><i class="fa fa-database"></i> Hibernate</a>
+<ul class="sub-menu toggle-submenu" style="display: none;">
+	<li id="menu-item-2952" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2952"><a href="https://www.dineshonjava.com/hibernate-search-api-hibernate-4-on/">Hibernate Search</a></li>
+</ul>
+<span class="toggle-caret"><i class="fa fa-plus"></i></span></li>
+<li id="menu-item-2954" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-2954 toggle-menu-item-parent"><a href="https://www.dineshonjava.com/"><i class="fa fa-list"></i> Tutorials</a>
+<ul class="sub-menu toggle-submenu" style="display: none;">
+	<li id="menu-item-2690" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2690"><a href="https://www.dineshonjava.com/design-patterns_25/">Design Patterns</a></li>
+	<li id="menu-item-2946" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2946 toggle-menu-item-parent"><a href="https://www.dineshonjava.com/web-service-introduction/">Web Services</a>
+	<ul class="sub-menu toggle-submenu" style="display: none;">
+		<li id="menu-item-2951" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2951"><a href="https://www.dineshonjava.com/rest-and-soap-web-service-interview/">WS Interview Questions</a></li>
+		<li id="menu-item-2947" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2947"><a href="https://www.dineshonjava.com/jax-ws-web-service-tutorial/">JAX-WS (SOAP)</a></li>
+		<li id="menu-item-2948" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2948"><a href="https://www.dineshonjava.com/jax-rs-web-service-tutorial/">JAX-RS (REST)</a></li>
+		<li id="menu-item-2949" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2949"><a href="https://www.dineshonjava.com/introduction-to-wsdl/">WSDL</a></li>
+		<li id="menu-item-2950" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2950"><a href="https://www.dineshonjava.com/what-is-soap/">SOAP</a></li>
+		<li id="menu-item-2969" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2969"><a href="https://www.dineshonjava.com/cloud-computing-tutorial/">Cloud Computing</a></li>
+	</ul>
+<span class="toggle-caret"><i class="fa fa-plus"></i></span></li>
+	<li id="menu-item-2962" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2962"><a href="https://www.dineshonjava.com/struts-2-baby-step-to-learn/%20">Struts 2 Tutorial</a></li>
+	<li id="menu-item-2974" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2974 toggle-menu-item-parent"><a href="https://www.dineshonjava.com/java-servlets-overview/">J2EE Tutorial</a>
+	<ul class="sub-menu toggle-submenu" style="display: none;">
+		<li id="menu-item-2956" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2956"><a href="https://www.dineshonjava.com/java-servlets-overview/">Servlet Tutorial</a></li>
+		<li id="menu-item-2957" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2957"><a href="https://www.dineshonjava.com/jsp-tutorial-baby-step-to-server-pages/">JSP Tutorial</a></li>
+		<li id="menu-item-2958" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2958"><a href="https://www.dineshonjava.com/jsp-standard-tag-library-jstl-tutorial/">JSTL Tutorial</a></li>
+		<li id="menu-item-2959" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2959"><a href="https://www.dineshonjava.com/java-database-connectivityjdbc-tutorial/">JDBC Tutorial</a></li>
+		<li id="menu-item-2960" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2960"><a href="https://www.dineshonjava.com/jaxb-2x-tutorial/">JAX B Tutorial</a></li>
+		<li id="menu-item-2961" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2961"><a href="https://www.dineshonjava.com/java-mail-api-tutorial/">Java Mail API</a></li>
+	</ul>
+<span class="toggle-caret"><i class="fa fa-plus"></i></span></li>
+	<li id="menu-item-2963" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2963"><a href="https://www.dineshonjava.com/hadoop-tutorial/">Hadoop Tutorial</a></li>
+	<li id="menu-item-2971" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2971"><a href="https://www.dineshonjava.com/ajax-tutorial/">AJAX Tutorial</a></li>
+	<li id="menu-item-2964" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2964 toggle-menu-item-parent"><a href="https://www.dineshonjava.com/maven-tutorial-for-beginners-eclipse/">Build Tools</a>
+	<ul class="sub-menu toggle-submenu" style="display: none;">
+		<li id="menu-item-2965" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2965"><a href="https://www.dineshonjava.com/maven-tutorial-for-beginners-eclipse/">Maven</a></li>
+		<li id="menu-item-2966" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2966"><a href="https://www.dineshonjava.com/how-to-install-gradle/">Gradle</a></li>
+		<li id="menu-item-2967" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2967"><a href="https://www.dineshonjava.com/apache-ant-tutorial/">ANT</a></li>
+	</ul>
+<span class="toggle-caret"><i class="fa fa-plus"></i></span></li>
+	<li id="menu-item-2968" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2968"><a href="https://www.dineshonjava.com/introduction-to-mongodb/">Mongo DB</a></li>
+	<li id="menu-item-2970" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2970"><a href="https://www.dineshonjava.com/thymeleaf-vs-jsp-spring-mvc-view-layer/">Thymeleaf</a></li>
+	<li id="menu-item-2972" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2972"><a href="https://www.dineshonjava.com/what-is-github-and-creating-repository-and-branches-on-git/">Git</a></li>
+	<li id="menu-item-2973" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2973"><a href="https://www.dineshonjava.com/linux-crontab-cron-job-examples/">Linux</a></li>
+</ul>
+<span class="toggle-caret"><i class="fa fa-plus"></i></span></li>
+<li id="menu-item-2884" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2884 toggle-menu-item-parent"><a href="https://www.dineshonjava.com/interview-questions-on-spring/"><i class="fa fa-question-circle"></i> Interview Q/A</a>
+<ul class="sub-menu toggle-submenu" style="display: none;">
+	<li id="menu-item-2889" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2889"><a href="https://www.dineshonjava.com/interview-questions-on-spring/">Spring Interview</a></li>
+	<li id="menu-item-2885" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2885"><a href="https://www.dineshonjava.com/spring-aop-interview-questions-and-answers/">AOP Interview</a></li>
+	<li id="menu-item-2890" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2890"><a href="https://www.dineshonjava.com/spring-mvc-interview-questions-and-answers/">MVC Interview</a></li>
+	<li id="menu-item-2886" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2886"><a href="https://www.dineshonjava.com/spring-boot-interview-questions-and-answers/">Spring Boot Interview</a></li>
+	<li id="menu-item-2887" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2887"><a href="https://www.dineshonjava.com/spring-boot-microservices-interview-questions-answers/">Microservices Interview</a></li>
+	<li id="menu-item-2888" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2888"><a href="https://www.dineshonjava.com/spring-security-interview-questions-and-answers/">Spring Security Interview</a></li>
+	<li id="menu-item-2891" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2891"><a href="https://www.dineshonjava.com/rest-and-soap-web-service-interview/">Web Service Interview</a></li>
+</ul>
+<span class="toggle-caret"><i class="fa fa-plus"></i></span></li>
+<li id="menu-item-2895" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2895 toggle-menu-item-parent"><a href="https://www.dineshrajput.com/contact"><i class="fa fa-check-square-o"></i> Training</a>
+<ul class="sub-menu toggle-submenu" style="display: none;">
+	<li id="menu-item-2660" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2660"><a href="https://www.dineshrajput.com/"><i class="fa fa-user-md"></i> Who I Am</a></li>
+	<li id="menu-item-4148" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-4148"><a href="https://www.dineshonjava.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+<span class="toggle-caret"><i class="fa fa-plus"></i></span></li>
+</ul>																			</nav>
+																<div id="mobile-menu-overlay" style="display: none;"></div></div>
+				    		
+							<div class="logo-wrap">
+																									  		<h2 id="logo" class="image-logo" itemprop="headline">
+											<a href="https://www.dineshonjava.com/"><img src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/dinesh-on-java-logo-1.png" alt="Dinesh on Java"></a>
+										</h2><!-- END #logo -->
+																								</div>
+			 
+							
+	               			  
+
+						</div><!--#header-->
+					</div><!--.container-->
+				</div>
+			</header>
+			
+<!--div id="div-gpt-ad-1645195058991-0"></div>
+    <script>
+        googletag.cmd.push(function() {
+          googletag.display(staticSlot);
+        });
+    </script-->
+<div id="page" class="single">
+	<div class="sidebar-left-article ">
+		<article class="article">
+			<div id="content_box">
+									<div id="post-709" class="g post post-709 page type-page status-publish">
+
+												
+						<div class="single_page single_post">
+															<div class="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#"><div><i class="fa fa-home"></i></div> <div typeof="v:Breadcrumb" class="root"><a rel="v:url" property="v:title" href="https://www.dineshonjava.com/">Home</a></div><div><i class="fa fa-caret-right"></i></div><div typeof="v:Breadcrumb"><a href="https://www.dineshonjava.com/hibernate/" rel="v:url" property="v:title">Hibernate</a></div><div><i class="fa fa-caret-right"></i></div><div><span>CRUD Operations Using Hibernate (Annotation and Configuration)</span></div></div>
+														<header>
+								<h1 class="title entry-title">CRUD Operations Using Hibernate (Annotation and Configuration)</h1>
+							</header>
+							<div class="post-content box mark-links entry-content">
+																<div class="thecontent">
+									<div dir="ltr" style="text-align: justify;">
+<div dir="ltr" style="text-align: justify;">
+<div dir="ltr" style="text-align: justify;">
+<div dir="ltr" style="text-align: justify;">
+<div dir="ltr" style="text-align: justify;">
+<div dir="ltr" style="text-align: justify;">
+<div dir="ltr" style="text-align: justify;">
+<div dir="ltr" style="text-align: justify;">
+<div dir="ltr" style="text-align: justify;">
+<div dir="ltr" style="text-align: justify;">
+<div dir="ltr" style="text-align: justify;">
+<div dir="ltr" style="text-align: justify;">
+<p>In this section, you will learn how to develop a CRUD application using hibernate annotation.<br>
+<b>Follows the following steps for developing the CRUD application in hibernate annotation.</b><br>
+<b>Step 1: Create Domain Entity Class</b></p>
+<div id="ads-id" align="center"></div>
+<p><b>Student.java</b></p>
+</div>
+<pre class="highlight">package com.sdnext.hibernate.tutorial.dto;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+@Table(name="STUDENT")
+public class Student implements Serializable 
+{
+
+ /**
+  * serialVersionUID
+  */
+ private static final long serialVersionUID = 8633415090390966715L;
+ @Id
+ @Column(name="ID")
+ @GeneratedValue(strategy=GenerationType.AUTO)
+ private int id;
+ @Column(name="STUDENT_NAME")
+ private String studentName;
+ @Column(name="ROLL_NUMBER")
+ private int rollNumber;
+ @Column(name="COURSE")
+ private String course;
+ public int getId() {
+  return id;
+ }
+ public void setId(int id) {
+  this.id = id;
+ }
+ public String getStudentName() {
+  return studentName;
+ }
+ public void setStudentName(String studentName) {
+  this.studentName = studentName;
+ }
+ public int getRollNumber() {
+  return rollNumber;
+ }
+ public void setRollNumber(int rollNumber) {
+  this.rollNumber = rollNumber;
+ }
+ public String getCourse() {
+  return course;
+ }
+ public void setCourse(String course) {
+  this.course = course;
+ }
+}
+</pre>
+<p>&nbsp;</p>
+</div>
+<p><b>Step 2: Create Hibernate Configuration file&nbsp;</b><br>
+<b>hibernate.cfg.xml</b><br>
+file contains<br>
+(a.) <b>database connection setting</b> (database driver (com.mysql.jdbc.Driver), url (jdbc:mysql://localhost:3306/hibernateDB2), username (root) and password (root)),<br>
+(b.) <b>SQL dialect</b> (dialect – org.hibernate.dialect.MySQLDialect),<br>
+(c.) <b>enable hibernate’s automatic session context management </b>(current_session_context_class – thread),<br>
+(d.) <b>disable the second level cache </b>(cache.provider_class – org.hibernate.cache.NoCacheProvider),<br>
+(e.) <b>print all executed SQL to stdout</b> (show_sql – true) and<br>
+(f.) <b>drop and re-create the database schema on startup</b> (hbm2ddl.auto – none).</p>
+</div>
+<pre class="highlight">&lt;hibernate-configuration&gt; 
+ &lt;session-factory&gt; 
+  &lt;!-- Database connection settings --&gt;
+   &lt;property name="connection.driver_class"&gt;com.mysql.jdbc.Driver&lt;/property&gt; 
+   &lt;property name="connection.url"&gt;jdbc:mysql://localhost:3306/hibernateDB2&lt;/property&gt; 
+   &lt;property name="connection.username"&gt;root&lt;/property&gt; 
+   &lt;property name="connection.password"&gt;root&lt;/property&gt; 
+
+  &lt;!-- JDBC connection pool (use the built-in) --&gt;
+   &lt;property name="connection.pool_size"&gt;1&lt;/property&gt; 
+
+  &lt;!-- SQL dialect --&gt;
+   &lt;property name="dialect"&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt; 
+
+  &lt;!-- Enable Hibernate's automatic session context management --&gt;
+    &lt;property name="current_session_context_class"&gt;thread&lt;/property&gt; 
+  
+  &lt;!-- Disable the second-level cache --&gt;
+   &lt;property name="cache.provider_class"&gt;org.hibernate.cache.NoCacheProvider&lt;/property&gt; 
+
+  &lt;!-- Echo all executed SQL to stdout --&gt;
+   &lt;property name="show_sql"&gt;true&lt;/property&gt; 
+  
+  &lt;!-- Drop and re-create the database schema on startup --&gt;
+   &lt;property name="hbm2ddl.auto"&gt;update&lt;/property&gt; 
+    
+   &lt;mapping class="com.sdnext.hibernate.tutorial.dto.Student"&gt;
+      
+  &lt;/mapping&gt;&lt;/session-factory&gt; 
+ &lt;/hibernate-configuration&gt;
+</pre>
+</div>
+</div>
+<p><b>Step 3: Create Hibernate Utility Class</b><br>
+<b>HibernateUtil.java</b></p>
+<pre class="highlight">package com.sdnext.hibernate.tutorial.utility;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
+
+public class HibernateUtil 
+{
+ private static final SessionFactory sessionFactory;
+ static
+ {
+  try
+  {
+   sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+  }
+  catch(Throwable th){
+   System.err.println("Enitial SessionFactory creation failed"+th);
+   throw new ExceptionInInitializerError(th);
+  }
+   }
+   public static SessionFactory getSessionFactory(){
+    return sessionFactory;
+   }
+}
+</pre>
+<p><b>Step 4: Create Student on the database.</b><br>
+<b>CreateStudent.java</b></p>
+<pre class="highlight">package com.sdnext.hibernate.tutorial;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.sdnext.hibernate.tutorial.dto.Student;
+import com.sdnext.hibernate.tutorial.utility.HibernateUtil;
+
+public class CreateStudent {
+
+ /**
+  * @param args
+  */
+ public static void main(String[] args) 
+ {
+  //Create student entity object
+  Student student = new Student();
+  student.setStudentName("Dinesh Rajput");
+  student.setRollNumber(01);
+  student.setCourse("MCA");
+  
+  //Create session factory object
+  SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+  //getting session object from session factory
+  Session session = sessionFactory.openSession();
+  //getting transaction object from session object
+  session.beginTransaction();
+  
+  session.save(student);
+  System.out.println("Inserted Successfully");
+  session.getTransaction().commit();
+  session.close();
+  sessionFactory.close();
+ }
+}</pre>
+<div style="background-color: #ff99cc; border-width: thin; border: solid;"><b style="color: blue;">OUTPUT: </b><br>
+log4j:WARN No appenders could be found for logger (org.hibernate.cfg.annotations.Version).<br>
+log4j:WARN Please initialize the log4j system properly.<br>
+Hibernate: insert into STUDENT (COURSE, ROLL_NUMBER, STUDENT_NAME) values (?, ?, ?)<br>
+<b>Inserted Successfully </b></div>
+</div>
+<p>&nbsp;</p>
+<div class="separator" style="clear: both; text-align: center;"><img src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/create.jpg" alt="CRUD Operations Using Hibernate" border="0" width="691" height="198"></div>
+<p>Now the following code the reading the student data from database.<br>
+<b>Step 5: Reading the Student data from the database table STUDENT</b><br>
+<b>ReadStudent.java</b></p>
+<pre class="highlight">package com.sdnext.hibernate.tutorial;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.sdnext.hibernate.tutorial.dto.Student;
+import com.sdnext.hibernate.tutorial.utility.HibernateUtil;
+
+public class ReadStudent {
+
+ /**
+  * @param args
+  */
+ public static void main(String[] args) 
+ {
+  //Create session factory object
+  SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+  //getting session object from session factory
+  Session session = sessionFactory.openSession();
+  //getting transaction object from session object
+  session.beginTransaction();
+  Query query = session.createQuery("from Student");
+  List students = query.list();
+  for(Student student : students)
+  {
+System.out.println("Roll Number: "+student.getRollNumber()+", Student Name: "+student.getStudentName()+", Course: "+student.getCourse());
+  }
+  session.getTransaction().commit();
+  sessionFactory.close();
+ }
+}
+</pre>
+<div style="background-color: #ff99cc; border-width: thin; border: solid;">
+<div style="color: blue;"><b>Output:</b></div>
+<p>log4j:WARN No appenders could be found for logger (org.hibernate.cfg.annotations.Version).<br>
+log4j:WARN Please initialize the log4j system properly.<br>
+Hibernate: select student0_.ID as ID0_, student0_.COURSE as COURSE0_, student0_.ROLL_NUMBER as ROLL3_0_, student0_.STUDENT_NAME as STUDENT4_0_ from STUDENT student0_<br>
+Roll Number: 1, Student Name: Dinesh Rajput, Course: MCA<br>
+Roll Number: 2, Student Name: Anamika Rajput, Course: PGDCP<br>
+Roll Number: 3, Student Name: Adesh Rajput, Course: MA<br>
+Roll Number: 4, Student Name: Vinesh Rajput, Course: BA</p>
+</div>
+</div>
+<div class="separator" style="clear: both; text-align: center;"><img loading="lazy" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/read.jpg" alt="CRUD Operations in Hibernate" width="640" height="83" border="0" data-recalc-dims="1"></div>
+<p>&nbsp;</p>
+</div>
+<p>The following code is for updating the data into the database table “STUDENT”.<br>
+<b>Step 6: Update the Student Record in the Database.</b><br>
+<b>UpdateStudent.java</b></p>
+<pre class="highlight">package com.sdnext.hibernate.tutorial;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.sdnext.hibernate.tutorial.dto.Student;
+import com.sdnext.hibernate.tutorial.utility.HibernateUtil;
+
+public class UpdateStudent {
+
+ /**
+  * @param args
+  */
+ public static void main(String[] args) 
+ {
+  //Create session factory object
+  SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+  //getting session object from session factory
+  Session session = sessionFactory.openSession();
+  //getting transaction object from session object
+  session.beginTransaction();
+  
+  Student student = (Student)session.get(Student.class, 2);
+  student.setStudentName("Sweety Rajput");
+  System.out.println("Updated Successfully");
+  session.getTransaction().commit();
+  sessionFactory.close();
+ }
+}</pre>
+<div style="background-color: #ff99cc; border-width: thin; border: solid;">
+<div style="color: blue;"><b>Output:</b></div>
+<p>&nbsp;</p>
+<div class="MsoNormal" style="mso-layout-grid-align: none; mso-pagination: none; text-autospace: none;">log4j:WARN No appenders could be found for logger (org.hibernate.cfg.annotations.Version).<br>
+log4j:WARN Please initialize the log4j system properly.<br>
+Hibernate: select student0_.ID as ID0_0_, student0_.COURSE as COURSE0_0_, student0_.ROLL_NUMBER as ROLL3_0_0_, student0_.STUDENT_NAME as STUDENT4_0_0_ from STUDENT student0_ where student0_.ID=?<br>
+Hibernate: update STUDENT set COURSE=?, ROLL_NUMBER=?, STUDENT_NAME=? where ID=?<br>
+<b>Updated Successfully</b></div>
+</div>
+</div>
+<div class="separator" style="clear: both; text-align: center;"><img src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/updated.jpg" alt="Annotation and Configuration" border="0" width="721" height="197"></div>
+<p><b>Step 7: Delete the student data from the database.</b><br>
+<b>DeleteStudent.java</b></p>
+<pre class="highlight">package com.sdnext.hibernate.tutorial;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.sdnext.hibernate.tutorial.dto.Student;
+import com.sdnext.hibernate.tutorial.utility.HibernateUtil;
+
+public class DeleteStudent {
+
+ /**
+  * @param args
+  */
+ public static void main(String[] args) 
+ {
+  //Create session factory object
+  SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+  //getting session object from session factory
+  Session session = sessionFactory.openSession();
+  //getting transaction object from session object
+  session.beginTransaction();
+  Student student = (Student)session.load(Student.class, 4);
+  session.delete(student);
+  System.out.println("Deleted Successfully");
+  session.getTransaction().commit();
+     sessionFactory.close();
+ }
+}
+</pre>
+<div style="background-color: #ff99cc; border-width: thin; border: solid;">
+<div style="color: blue;"><b>Output:</b></div>
+<p>log4j:WARN No appenders could be found for logger (org.hibernate.cfg.annotations.Version).<br>
+log4j:WARN Please initialize the log4j system properly.<br>
+Hibernate: select student0_.ID as ID0_0_, student0_.COURSE as COURSE0_0_, student0_.ROLL_NUMBER as ROLL3_0_0_, student0_.STUDENT_NAME as STUDENT4_0_0_ from STUDENT student0_ where student0_.ID=?<br>
+<b>Deleted Successfully</b><br>
+Hibernate: delete from STUDENT where ID=?</p>
+</div>
+</div>
+<div class="separator" style="clear: both; text-align: center;"><img src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/deleted.jpg" alt="delete" border="0" width="721" height="197"></div>
+</div>
+<div class="separator" style="clear: both; text-align: center;"><img src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/crud.jpg" alt="CRUD" border="0" width="368" height="520"></div>
+<p>&nbsp;</p>
+<h3 class="post-title entry-title" style="background-color: #f6eeee; color: #9900ff; font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif; font-size: 30px; font-weight: normal; margin: 0.75em 0px 0px; position: relative; text-align: center;"><a href="https://www.dineshonjava.com/2013/07/how-to-solve-querysyntaxexception-table.html#.UdVkAReps2h" target="_blank" rel="noopener">How to solve QuerySyntaxException (table is not mapped) in hibetnate?</a></h3>
+<p><b>In the <a href="https://www.dineshonjava.com/p/transient-persistent-and-detached.html">Next Chapter</a> we will discuss about the <a href="https://www.dineshonjava.com/p/transient-persistent-and-detached.html">Object states in the Hibernate</a>.</b><br>
+<b><br>
+</b> <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;&lt;<a style="font-family: Times, &#39;Times New Roman&#39;, serif;" href="https://www.dineshonjava.com/p/implementing-inheritance-in-hibernate.html">Previous Chapter 22</a>&lt;&lt; &nbsp;&nbsp; &gt;&gt;N<a href="https://www.dineshonjava.com/p/transient-persistent-and-detached.html">ext Chapter 24</a>&gt;&gt;</b><br>
+<b><br>
+</b> <b><br>
+</b> <b><br>
+</b> <b><br>
+</b></p>
+</div>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul data-sharing-events-added="true"><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-709" class="share-facebook sd-button share-icon no-text" href="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/?share=facebook&amp;nb=1" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-709" class="share-twitter sd-button share-icon no-text" href="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-linkedin"><a rel="nofollow noopener noreferrer" data-shared="sharing-linkedin-709" class="share-linkedin sd-button share-icon no-text" href="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/?share=linkedin&amp;nb=1" target="_blank" title="Click to share on LinkedIn"><span></span><span class="sharing-screen-reader-text">Click to share on LinkedIn (Opens in new window)</span></a></li><li class="share-jetpack-whatsapp"><a rel="nofollow noopener noreferrer" data-shared="" class="share-jetpack-whatsapp sd-button share-icon no-text" href="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/?share=jetpack-whatsapp&amp;nb=1" target="_blank" title="Click to share on WhatsApp"><span></span><span class="sharing-screen-reader-text">Click to share on WhatsApp (Opens in new window)</span></a></li><li class="share-telegram"><a rel="nofollow noopener noreferrer" data-shared="" class="share-telegram sd-button share-icon no-text" href="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/?share=telegram&amp;nb=1" target="_blank" title="Click to share on Telegram"><span></span><span class="sharing-screen-reader-text">Click to share on Telegram (Opens in new window)</span></a></li><li class="share-pinterest"><a rel="nofollow noopener noreferrer" data-shared="sharing-pinterest-709" class="share-pinterest sd-button share-icon no-text" href="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/?share=pinterest&amp;nb=1" target="_blank" title="Click to share on Pinterest"><span></span><span class="sharing-screen-reader-text">Click to share on Pinterest (Opens in new window)</span></a></li><li class="share-skype"><a rel="nofollow noopener noreferrer" data-shared="sharing-skype-709" class="share-skype sd-button share-icon no-text" href="https://www.dineshonjava.com/hibernate/crud-operations-using-hibernate-3/?share=skype&amp;nb=1" target="_blank" title="Click to share on Skype"><span></span><span class="sharing-screen-reader-text">Click to share on Skype (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div>
+								</div>
+																
+															</div><!--.post-content box mark-links-->
+						</div>
+					</div>
+					<!-- You can start editing here. -->
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"></h3><h4><span>Add Comment</span></h4><p class="must-log-in">You must be <a href="https://www.dineshonjava.com/wp-login.php?redirect_to=https%3A%2F%2Fwww.dineshonjava.com%2Fhibernate%2Fcrud-operations-using-hibernate-3%2F">logged in</a> to post a comment.</p>	</div><!-- #respond -->
+			</div>
+	</div>
+							</div>
+		</article>
+	 	<aside id="sidebar" class="sidebar c-4-12 sidebar-left" role="complementary" itemscope="" itemtype="http://schema.org/WPSideBar">
+	<div id="custom_html-9" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div dir="ltr" style="color: #20124d; font-family: &#39;calibri&#39; , sans-serif;font-size: 13pt; text-align: justify;">Learn various <strong>design patterns</strong> and <strong>best practices</strong> and use them to solve common design problems. </div>
+<div dir="ltr"></div>
+<div dir="ltr"><a href="https://www.amazon.in/gp/product/1788299450/ref=as_li_tl?ie=UTF8&amp;tag=dineshonjav06-21&amp;camp=3638&amp;creative=24630&amp;linkCode=as2&amp;creativeASIN=1788299450&amp;linkId=88215d31ce0459d5fd9c7ccaee7b718a" target="_blank" rel="noopener"><img class="aligncenter wp-image-3053 size-medium" title="Spring-5-Design-Pattern" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/Spring-5-design-pattern.jpg" alt="Spring-5-Design-Pattern" width="243" height="300"></a></div></div></div><div id="block-5" class="widget widget_block"><!--div align="center">
+<b>Advertisements</b><p></p>
+<div class="increaserev mcm300x250"></div>
+</div--></div><div id="custom_html-14" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div dir="ltr" style="color: #20124d; font-family: &#39;calibri&#39; , sans-serif;font-size: 13pt; text-align: justify;">Learn <strong>Spring Boot 2.0</strong> and <strong>Spring Cloud Application Microservices Architecture</strong> to solve common cloud native problems. </div>
+<div dir="ltr"></div>
+<div dir="ltr"><a href="https://www.amazon.in/gp/product/1787127567/ref=as_li_tl?ie=UTF8&amp;camp=3638&amp;creative=24630&amp;creativeASIN=1787127567&amp;linkCode=as2&amp;tag=dineshonjav06-21&amp;linkId=5da3154be173650b702f5aa90e3f9a96" target="_blank" rel="noopener"><img class="aligncenter wp-image-3053 size-medium" title="Spring-5-Design-Pattern" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/Mastering-Spring-Boot.png" alt="Spring-5-Design-Pattern" width="243" height="300"></a></div></div></div><div id="custom_html-20" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div dir="ltr" style="color: #20124d; font-family: &#39;calibri&#39; , sans-serif;font-size: 13pt; text-align: justify;"><strong>Designing Applications with Spring Boot 2.2 and React JS:</strong> Let us full stack development with Spring Boot and React JS.</div>
+<div dir="ltr"><a href="https://www.amazon.in/gp/product/9388511646/ref=as_li_qf_asin_il_tl?ie=UTF8&amp;tag=dineshonjav06-21&amp;creative=24630&amp;linkCode=as2&amp;creativeASIN=9388511646&amp;linkId=fe9804f3819355bf8cd6579a8f583717" target="_blank" rel="noopener"><img class="aligncenter wp-image-3053 size-medium" title="Designing Applications with Spring Boot 2.2 and React JS" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/Designing_Applications_Front_copy_1024x1024.jpg" alt="Designing Applications with Spring Boot 2.2 and React JS" width="243" height="300"></a></div></div></div><div id="custom_html-18" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div dir="ltr" style="color: #20124d; font-family: &#39;calibri&#39; , sans-serif;font-size: 13pt; text-align: justify;">Hands-On Microservices - Monitoring and Testing: A performance engineer's guide to the continuous testing and monitoring of microservices. </div>
+<div dir="ltr"></div>
+<div align="center">
+<a target="_blank" href="https://www.amazon.in/gp/product/1789133602/ref=as_li_tl?ie=UTF8&amp;camp=3638&amp;creative=24630&amp;creativeASIN=1789133602&amp;linkCode=as2&amp;tag=dineshonjav06-21&amp;linkId=311920e25cd55b4b301a11b41eb5283e" rel="noopener"><img border="0" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/q"></a><img src="https://ir-in.amazon-adsystem.com/e/ir?t=dineshonjav06-21&amp;l=am2&amp;o=31&amp;a=1789133602" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;">
+
+</div></div></div></aside>
+	</div>
+		</div><!--#page-->
+	<footer id="site-footer" role="contentinfo" itemscope="" itemtype="http://schema.org/WPFooter">
+                <div class="copyrights">
+            <div class="container">
+			    <!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="https://www.dineshonjava.com/" title="Learn Core and Advanced Java, Spring with us step by step for beginner" rel="nofollow">Dinesh on Java</a> Copyright © 2022. </span>
+    <nav id="" class="">
+                    <ul id="menu-header-menu-1" class="menu clearfix"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2662"><a href="https://www.dineshonjava.com/core-java-baby-step-to-be-best-java-ian/"><i class="fa fa-coffee"></i> Core Java</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2953"><a href="https://www.dineshonjava.com/core-java-baby-step-to-be-best-java-ian/">Core Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2880"><a href="https://www.dineshonjava.com/category/ocpjp/">Java 8 Certification</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2881"><a href="https://www.dineshonjava.com/core-java-interview-questions/">Interview Q/A</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2866"><a href="https://www.dineshonjava.com/spring-boot-tutorial/">Spring Boot</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2668"><a href="https://www.dineshonjava.com/spring-tutorial/"><i class="fa fa-leaf"></i> Spring</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2683"><a href="https://www.dineshonjava.com/spring-tutorial/">Spring Core</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2867"><a href="https://www.dineshonjava.com/spring-aop-tutorial-with-example-aspect-advice-pointcut-joinpoint/">Spring AOP</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2868"><a href="https://www.dineshonjava.com/spring-web-mvc-framework-chapter-38/">Spring MVC</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2869"><a href="https://www.dineshonjava.com/spring-security-take-baby-step-to-secure/">Spring Security</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2684"><a href="https://www.dineshonjava.com/microservices-with-spring-boot/">Microservices</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2870"><a href="https://www.dineshonjava.com/spring-4-tutorials-step-to-new-spring/">Spring 4</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2871"><a href="https://www.dineshonjava.com/spring-5/">Spring 5</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2872"><a href="https://www.dineshonjava.com/spring-batch-process-with-example/">Spring Batch</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2882"><a href="https://www.dineshonjava.com/spring-mobile-tutorial/">Spring Mobile</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2883"><a href="https://www.dineshonjava.com/spring-hateoas-hypermedia-driven-restful-web-service/">Spring HATEOAS</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2945"><a href="https://www.dineshonjava.com/hibernate-3-on-baby-steps/"><i class="fa fa-database"></i> Hibernate</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2952"><a href="https://www.dineshonjava.com/hibernate-search-api-hibernate-4-on/">Hibernate Search</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-2954"><a href="https://www.dineshonjava.com/"><i class="fa fa-list"></i> Tutorials</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2690"><a href="https://www.dineshonjava.com/design-patterns_25/">Design Patterns</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2946"><a href="https://www.dineshonjava.com/web-service-introduction/">Web Services</a>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2951"><a href="https://www.dineshonjava.com/rest-and-soap-web-service-interview/">WS Interview Questions</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2947"><a href="https://www.dineshonjava.com/jax-ws-web-service-tutorial/">JAX-WS (SOAP)</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2948"><a href="https://www.dineshonjava.com/jax-rs-web-service-tutorial/">JAX-RS (REST)</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2949"><a href="https://www.dineshonjava.com/introduction-to-wsdl/">WSDL</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2950"><a href="https://www.dineshonjava.com/what-is-soap/">SOAP</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2969"><a href="https://www.dineshonjava.com/cloud-computing-tutorial/">Cloud Computing</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2962"><a href="https://www.dineshonjava.com/struts-2-baby-step-to-learn/%20">Struts 2 Tutorial</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2974"><a href="https://www.dineshonjava.com/java-servlets-overview/">J2EE Tutorial</a>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2956"><a href="https://www.dineshonjava.com/java-servlets-overview/">Servlet Tutorial</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2957"><a href="https://www.dineshonjava.com/jsp-tutorial-baby-step-to-server-pages/">JSP Tutorial</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2958"><a href="https://www.dineshonjava.com/jsp-standard-tag-library-jstl-tutorial/">JSTL Tutorial</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2959"><a href="https://www.dineshonjava.com/java-database-connectivityjdbc-tutorial/">JDBC Tutorial</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2960"><a href="https://www.dineshonjava.com/jaxb-2x-tutorial/">JAX B Tutorial</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2961"><a href="https://www.dineshonjava.com/java-mail-api-tutorial/">Java Mail API</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2963"><a href="https://www.dineshonjava.com/hadoop-tutorial/">Hadoop Tutorial</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2971"><a href="https://www.dineshonjava.com/ajax-tutorial/">AJAX Tutorial</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2964"><a href="https://www.dineshonjava.com/maven-tutorial-for-beginners-eclipse/">Build Tools</a>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2965"><a href="https://www.dineshonjava.com/maven-tutorial-for-beginners-eclipse/">Maven</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2966"><a href="https://www.dineshonjava.com/how-to-install-gradle/">Gradle</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2967"><a href="https://www.dineshonjava.com/apache-ant-tutorial/">ANT</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2968"><a href="https://www.dineshonjava.com/introduction-to-mongodb/">Mongo DB</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2970"><a href="https://www.dineshonjava.com/thymeleaf-vs-jsp-spring-mvc-view-layer/">Thymeleaf</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2972"><a href="https://www.dineshonjava.com/what-is-github-and-creating-repository-and-branches-on-git/">Git</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2973"><a href="https://www.dineshonjava.com/linux-crontab-cron-job-examples/">Linux</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2884"><a href="https://www.dineshonjava.com/interview-questions-on-spring/"><i class="fa fa-question-circle"></i> Interview Q/A</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2889"><a href="https://www.dineshonjava.com/interview-questions-on-spring/">Spring Interview</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2885"><a href="https://www.dineshonjava.com/spring-aop-interview-questions-and-answers/">AOP Interview</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2890"><a href="https://www.dineshonjava.com/spring-mvc-interview-questions-and-answers/">MVC Interview</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2886"><a href="https://www.dineshonjava.com/spring-boot-interview-questions-and-answers/">Spring Boot Interview</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2887"><a href="https://www.dineshonjava.com/spring-boot-microservices-interview-questions-answers/">Microservices Interview</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2888"><a href="https://www.dineshonjava.com/spring-security-interview-questions-and-answers/">Spring Security Interview</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2891"><a href="https://www.dineshonjava.com/rest-and-soap-web-service-interview/">Web Service Interview</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2895"><a href="https://www.dineshrajput.com/contact"><i class="fa fa-check-square-o"></i> Training</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2660"><a href="https://www.dineshrajput.com/"><i class="fa fa-user-md"></i> Who I Am</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-4148"><a href="https://www.dineshonjava.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+</ul>            </nav>
+ 
+</div>
+<!--end copyrights-->
+            </div>
+		</div> 
+	</footer><!--#site-footer-->
+</div><!--.main-container-->
+        <!--start footer code-->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-32803942-1');
+</script>
+    <!--end footer code-->
+                <script type="text/javascript" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/ads.js.Без названия"></script>
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/www.dineshonjava.com\/hibernate\/crud-operations-using-hibernate-3\/":709};
+	</script>
+						<script type="text/javascript" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/photon.min.js.Без названия" id="jetpack-photon-js"></script>
+<script type="text/javascript" async="async" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/owl.carousel.min.js.Без названия" id="owl-carousel-js"></script>
+<script type="text/javascript" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/ads.js.Без названия" id="quads-admin-ads-js"></script>
+<script type="text/javascript" async="async" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/sticky.js.Без названия" id="StickyNav-js"></script>
+<script type="text/javascript" id="mts_ajax-js-extra">
+/* <![CDATA[ */
+var mts_ajax_search = {"url":"https:\/\/www.dineshonjava.com\/wp-admin\/admin-ajax.php","ajax_search":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" async="async" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/ajax.js.Без названия" id="mts_ajax-js"></script>
+<script type="text/javascript" id="sharing-js-js-extra">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+/* ]]> */
+</script>
+<script async="true" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/count.json"></script><script type="text/javascript" src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/sharing.min.js.Без названия" id="sharing-js-js"></script>
+<script type="text/javascript" id="sharing-js-js-after">
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-facebook' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-facebook' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-twitter' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-twitter' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-linkedin' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-linkedin' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-telegram' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-telegram' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomtelegram', 'menubar=1,resizable=1,width=450,height=450' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-skype' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-skype' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomskype', 'menubar=1,resizable=1,width=305,height=665' );
+						return false;
+					}
+				} );
+			} )();
+</script>
+<script src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/e-202248.js.Без названия" defer=""></script>
+<script>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:11.4',blog:'134105702',post:'709',tz:'5.5',srv:'www.dineshonjava.com'} ]);
+	_stq.push([ 'clickTrackerInit', '134105702', '709' ]);
+</script>
+
+<img src="./CRUD Operations Using Hibernate (Annotation and Configuration) - Dinesh on Java_files/g.gif" alt="" width="6" height="5" id="wpstats"></body></html>

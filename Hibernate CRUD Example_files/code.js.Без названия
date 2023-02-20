@@ -1,0 +1,1228 @@
+// vars
+var w = 728;
+var h = 90;
+
+var myDraggable = [];
+var startX, startY;
+var ctx, ctx2, d, r;
+var p = {
+	list: [],
+	loaded: 0,
+};
+
+var o = {};
+var oNames = {
+	id: 'adArea canvas label ctaArea dragEl cont block logo a1 a2 loaderCont loader ctaButton gameInfo teamA teamB teamAFlag teamAName teamBFlag teamBName playDate playTime gameOdds teamVs',
+}
+
+function init_next() {
+	// console.log("init_next")
+	setVars();
+
+	createRhombs();
+	createBlock();
+
+	initAnim();
+
+	initDrag();
+
+	animLoop();
+
+	clockLoop();
+
+	// o.logo.addEventListener("click", openIKI);
+}
+
+function activateCTA(mode) {
+	if (mode) {
+		o.ctaArea.style.display = "block";
+		o.ctaArea.addEventListener("click", openCTA);
+	} else {
+		o.ctaArea.style.display = "none";
+		o.ctaArea.removeEventListener("click", openCTA);
+	}
+}
+
+function openCTA() {
+	window.open(d.curUrl, clickTag);
+	//startEvent(d.curPid);
+}
+
+function openIKI() {
+	window.open( siteUrl, clickTag );
+}
+
+function animLoop() {
+	requestAnimationFrame(animLoop);
+
+	//
+
+	d.anim.ax = Math.cos(d.lastUpdate * 0.001) * 100;
+	d.anim.ay = Math.sin(d.lastUpdate * 0.001) * 100;
+
+	var adx = d.anim.lax - d.anim.ax;
+	var ady = d.anim.lay - d.anim.ay;
+
+	d.anim.lax = d.anim.ax;
+	d.anim.lay = d.anim.ay;
+
+
+
+	//
+
+	// console.log( d.anim.aPwr )
+
+	d.drag.dx = (d.drag.x + d.drag.sx) - d.drag.lx;
+	d.drag.dy = (
+		d.drag.y + d.drag.sy) - d.drag.ly;
+	d.drag.lx = d
+	.drag.x + d.drag.sx;
+	d.drag.ly = d
+	.drag.y + d.drag.sy;
+
+	// d.drag.cx = d.drag.x + d.drag.sx// + d.drag.ax;
+	// d.drag.cy = d.drag.y + d.drag.sy// + d.drag.ay;
+
+	d.drag.cx += d.drag.dx + d.drag.ax + adx * d.anim.aPwr;
+	d.drag.cy += d.drag.dy + d.drag.ay + ady * d.anim.aPwr;
+
+	if (!d.stopLoop) {
+		d.anim.x = d.anim.sx + d.drag.cx;
+		d.anim.y = d.anim.sy + d.drag.cy;
+	}
+
+	// console.log( d.anim.x, d.drag.cx, d.drag.x, d.drag.sx, d.drag.ax )
+
+
+	changeTilesPos();
+	if (d.anim.lx != d.anim.x || d.anim.ly != d.anim.y) {
+		var xo = -d.anim.x + w / 2;
+		var yo = -d.anim.y + h / 2;
+		o.cont.style.transformOrigin = xo + "px " + yo + "px";
+		gsap.set(o.cont, {
+			x: d.anim.x,
+			y: d.anim.y
+		})
+	}
+	d.anim.lx = d.anim.x;
+	d.anim.ly = d.anim.y;
+}
+
+function changeTilesPos() {
+	for (var i = 0; i < d.rhomb.list.length; i++) {
+		changeTilePos(d.rhomb.list[i])
+	}
+
+	// changeTilePos( d.rhomb.list[0] )
+}
+
+function changeTilePos(rhomb) {
+	// console.log( "----------===----------" )
+	// console.log( rhomb.r, rhomb.c )
+
+	var margin = d.rhomb.size * (1 - d.rhomb.margin);
+
+	var s2 = d.rhomb.size + margin;
+
+	var xx = d.anim.x + rhomb.x;
+	var yy = d.anim.y + rhomb.y;
+
+	var num = 1.39;
+	// var xs = ((d.rhomb.margin + num) / 2) * (d.rhomb.size * num);
+	// var ys = (d.rhomb.margin) * (d.rhomb.size * 1);
+
+	var xs = (d.rhomb.size  * 1 + 3);
+	var ys = (d.rhomb.size  * 1 + 3);
+
+	var s3 = w + (margin * 1.6);
+	var s4 = h + (margin * 4.8);
+
+	if (xx < -s2) {
+		rhomb.x += (d.rhomb.cols) * xs;
+		gsap.set(rhomb.el, {
+			x: rhomb.x
+		})
+		// } else if(xxx > w){
+	} else if (xx > s3) {
+		rhomb.x += -(d.rhomb.cols) * xs;
+		gsap.set(rhomb.el, {
+			x: rhomb.x
+		})
+	}
+
+	if (yy < -s2) {
+		rhomb.y += (d.rhomb.rows) * ys;
+		gsap.set(rhomb.el, {
+			y: rhomb.y
+		})
+		// } else if (yyy > h){
+	} else if (yy > s4) {
+		rhomb.y += -(d.rhomb.rows) * ys;
+		gsap.set(rhomb.el, {
+			y: rhomb.y
+		})
+	}
+
+}
+
+function createRhombs() {
+
+	// var iki_logo_num = Math.floor( p.amm * Math.random() )
+
+	var count = 0;
+	for (var r = 0; r < d.rhomb.rows; r++) {
+		for (var c = 0; c < d.rhomb.cols; c++) {
+			// if( count != iki_logo_num ){
+			var item = p.list[count];
+			createRhomb("product", r, c, item, count);
+			// } else {
+			// createRhomb( "logo", r, c, null, count );
+			// }
+			count++;
+		}
+	}
+
+}
+
+function createRhomb(type, r, c, item, count) {
+	// console.log( item )
+
+	var rhomb = document.createElement("div");
+	rhomb.classList.add("rhomb");
+	rhomb.setAttribute("alt", count)
+	rhomb.setAttribute("pid", item['id'])
+
+	rhomb.style.zIndex = d.zIndex;
+	rhomb.style.width = d.rhomb.size + "px";
+	rhomb.style.height = d.rhomb.size + "px";
+	// rhomb.style.borderRadius = (d.rhomb.size * d.rhomb.radius) + "px";
+	// rhomb.style.borderRadius = 50 + "%";
+	// rhomb.style.border = "1px solid white";
+
+	var x0 = d.rhomb.x0 * d.rhomb.size;
+	var y0 = d.rhomb.y0 * d.rhomb.size;
+	var num = 1.39;
+	// var xs = ((d.rhomb.margin + num) / 2) * (d.rhomb.size * num);
+	// var ys = (d.rhomb.margin) * (d.rhomb.size * 1);
+
+	var xs = (d.rhomb.size * 1 + 3 );
+	var ys = (d.rhomb.size  * 1 + 3);
+
+	var x = c * xs + x0;
+	var y = r * ys + y0;
+	if (r % 2 == 1) {
+		//x += xs / 2;
+	}
+
+	if (c % 2 == 1) {
+		y = r * ys;
+	}
+
+	gsap.set(rhomb, {
+		x: x,
+		y: y
+	})
+
+	// P I C
+	var pic = document.createElement("div");
+	pic.classList.add("pic");
+	pic.classList.add("abs");
+	var src;
+	if (type == "product") {
+		src = item.src;
+	} else if (type == "logo") {
+		src = assets_url + "logo.png";
+	}
+	// pic.style.backgroundImage = "url(" + item["image_link"] + ")";
+	// pic.style.backgroundImage = "url(" + src + ")";
+
+	// checkPixelColor(item.src, 20, 20);
+
+	var teamInfo = `
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(${imageUrlReset(item.teams[0].team_image)})"></p>
+					<p class="teamName">${item.teams[0].team_name}</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(${imageUrlReset(item.teams[1].team_image)})"></p>
+					<p class="teamName">${item.teams[1].team_name}</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">${item.play_date}</div>
+				<div class="playTime">${item.play_time}</div>
+			</div>
+		</div>
+	`;
+	pic.innerHTML = teamInfo;
+
+	// A P P E N D S
+	rhomb.appendChild(pic);
+	o.cont.appendChild(rhomb);
+
+	d.rhomb.list.push({
+		index: count,
+		pic: pic,
+		el: rhomb,
+		x: x,
+		y: y,
+		c: c,
+		r: r,
+	});
+
+	rhomb.onclick = onRhombClick;
+}
+
+function imageUrlReset(imgUrl) {
+	let imglink = imgUrl.split('/').reverse()[0];
+	imglink = assets_url + "flag/" + imglink;
+	return imglink;
+}
+
+function onRhombClick() {
+	var index = parseFloat(this.getAttribute("alt"));
+	showProduct(index);
+}
+
+function showProduct(index) {
+	// yoyoAnim(false);
+	doPause2("idle");
+	doPause(true);
+	myDraggable[0][0].disable();
+	var item = d.rhomb.list[index];
+	var product = p.list[index];
+
+	item.el.classList.add("hasOpen");
+	document.getElementById('adArea').classList.add('hasProductShow');
+	
+
+	o.block.style.display = "block";
+	o.block.style.opacity = 0;
+	setUpProductInfo(product);
+	animProductInfo(true);
+
+	d.stopLoop = true;
+	d.anim.xInc = 0;
+	d.anim.yInc = 0;
+
+	d.zIndex++;
+	item.el.style.zIndex = d.zIndex;
+
+	var x = item.x + d.anim.x;
+	var y = item.y + d.anim.y;
+
+	var dx = -(x - w / 2);
+	var dy = -(y - h / 2);
+
+	var ddx = dx - d.rhomb.size / 2;
+	var ddy = dy - d.rhomb.size / 2;
+
+	var nx = d.anim.x + ddx;
+	var ny = d.anim.y + ddy;
+
+	var dur = 0.5;
+
+	gsap.to(d.anim, dur, {
+		x: nx,
+		y: ny
+	})
+
+	gsap.to(item.pic, dur, {
+		scale: 0, 
+		opacity: 0,
+		y: -4.5, 
+		x: -4.5,
+		onStart: function(){
+			o.block.style.opacity = 1;
+		}
+	})
+	gsap.to(item.el, dur, {
+		scale: 4.5,
+		ease: "power2.inOut",
+		onComplete: function () {
+			// d.curUrl = product["link"];
+			var decodeLink = decodeURIComponent(product.link);
+			var link =  decodeLink;
+			// console.log(product.id)
+			// console.log(product.link)
+			var productUrl = encodeURIComponent( clickTag );
+			var res = clickTag;
+
+			d.curUrl = res;
+			d.curPid = product.id;
+			activateCTA(true);
+			setTimeout(function () {
+				closeRhomb(item, ddx, ddy);
+				item.el.classList.remove("hasOpen");
+				document.getElementById('adArea').classList.remove('hasProductShow');
+				o.block.style.opacity = 0;
+			}, 2500);
+		}
+	})
+
+
+	// gsap.set(o.marker, {x: w/2, y: h/2})
+}
+
+function animProductInfo(mode) {
+	if (mode) {
+		var dur = 0.75;
+		var delay = 0.0;
+
+		gsap.set([o.teamA, o.teamB, o.ctaButton], {
+			x: 0,
+			y: 0,
+			opacity: 1,
+			scale: 0.8
+		});
+		gsap.set([o.playDate, o.playTime, o.ctaButton], {
+			x: 0,
+			y: 300,
+			opacity: 1,
+			scale: 0.8
+		});
+		gsap.set([o.gameOdds], {
+			x: 0,
+			y: -45,
+			opacity: 1,
+			scale: 0.8
+		});
+		gsap.from([o.teamA, o.teamB], dur, {
+			delay: delay + 0.15,
+			x: -80,
+			opacity: 0,
+			ease: Back.easeOut
+		})
+		gsap.from(o.playDate, dur, {
+			delay: delay + 0.25,
+			x: -80,
+			opacity: 0,
+			ease: Back.easeOut
+		})
+		gsap.from(o.playTime, dur, {
+			delay: delay + 0.35,
+			scale: 0,
+			ease: Back.easeOut
+		})
+		gsap.from(o.gameOdds, dur, {
+			delay: delay + 0.25,
+			scale: 0,
+			opacity: 0,
+			ease: Back.easeOut
+		})
+		gsap.from(o.ctaButton, dur, {
+			delay: delay + 0.35,
+			scale: 0,
+			opacity: 0,
+			ease: Back.easeOut
+		})
+	} else {
+		var dur = 0.3;
+		var delay = 0.0;
+		gsap.to([o.teamA, o.teamB], dur, {
+			delay: delay + 0.0,
+			x: 40,
+			y: -40,
+			opacity: 0,
+			ease: "power2.in"
+		})
+		gsap.to(o.playDate, dur, {
+			delay: delay + 0.0,
+			x: 40,
+			y: -40,
+			opacity: 0,
+			ease: "power2.in"
+		})
+		gsap.to(o.playTime, dur, {
+			delay: delay + 0.0,
+			y: -40,
+			x: -40,
+			opacity: 0,
+			ease: "power2.in"
+		})
+		gsap.to(o.gameOdds, dur, {
+			delay: delay + 0.0,
+			scale: 0,
+			opacity: 0,
+			ease: "power2.in"
+		})
+		gsap.to(o.ctaButton, dur, {
+			delay: delay + 0.0,
+			scale: 0,
+			opacity: 0,
+			ease: "power2.in"
+		})
+	}
+}
+
+function setUpProductInfo(item) {
+	// var title = 
+	// console.log( item );
+
+	changeBlockText(item);
+
+	// addText(last_price, "", lprice_num.toString());
+
+	// addText(title, "", item["g:title"]);
+	// addText(price, "price", item["g:price"]);
+	// addText(discount, "discount", item["g:discount"]);
+	// addText(description, "", item["g:description"]);
+
+	// fixFontSize(title, 55, true);
+	// fixFontSize(description, 26, true);
+
+}
+
+function closeRhomb(item, ddx, ddy) {
+	myDraggable[0][0].enable();
+	var dur = 0.5;
+
+	activateCTA(false);
+
+	doPause2(true);
+
+	gsap.to(item.pic, dur, {
+		scale: 1,
+		opacity: 1,
+		x: 0,
+		y: 0,
+		ease: "power2.inOut"
+	})
+	gsap.to(item.el, dur, {
+		scale: 1,
+		ease: "power2.inOut",
+		onComplete: function () {
+			doPause(false);
+		}
+	})
+
+	d.stopLoop = false;
+
+	animProductInfo(false);
+	// d.anim.xInc = 3 * (0.5 - Math.random());
+	// d.anim.yInc = 3 * (0.5 - Math.random());
+
+	// d.drag.sx = d.anim.x;
+	// d.drag.sy = d.anim.y;
+	// d.drag.x = 0;
+	// d.drag.y = 0;
+	// d.drag.lx = 0;
+	// d.drag.ly = 0;
+	// d.anim.x = 0;
+	// d.anim.y = 0;
+	d.anim.sx += ddx;
+	d.anim.sy += ddy;
+
+	// console.log(ddx, ddy)
+
+	// setTimeout( function(){
+	//   var index = Math.floor( p.amm * Math.random() );
+	//   showProduct(index);
+	// }, 1000 )
+}
+
+
+function initAnim() {
+
+	// gsap.to(d.anim, 0.5, {aPwr: 1})
+
+	// gsap.to(o.cont, 3, {scale: 2, yoyo: true, repeat: -1, ease: "power1.inOut"})
+
+	gsap.set(o.cont, {
+		scale: d.scale2
+	})
+	gsap.from(o.cont, 1, {
+		scale: d.scale0,
+		ease: "power3.out"
+	})
+	// gsap.to(o.cont, 1, {scale: 1.3, ease: "power1.inOut"})
+
+	gsap.to(o.loaderCont, 0.4, {
+		opacity: 0,
+		onComplete: function () {
+			o.loader.classList.remove("rotating")
+			o.loaderCont.style.display = "none";
+		}
+	})
+
+	gsap.set(o.logo, {
+		left: 0,
+		top: 0,
+		// scale: 0.81
+	})
+	gsap.set(".logos", {
+		display: "block"
+	})
+	gsap.from(".logos", .7, {
+		y: -90,
+		ease: Power2.easeOut
+	})
+
+
+	// gsap.to(d.anim, 2, {ax: 1, ay: 1, ease: "sine.inOut", });
+	// yoyoAnim(true);
+
+	// gsap.set([o.a1], {x: -100})
+	// gsap.set([o.a2], {x: 100})
+	// gsap.to(o.a1, 0.5, {delay: 0.2, opacity: 1, x: 0, ease: "power2.out"})
+	// gsap.to(o.a2, 0.5, {delay: 0.25, opacity: 1, x: 0, ease: "power2.out"})
+
+}
+
+function yoyoAnim(mode) {
+	console.log("yoyoAnim", mode)
+	if (mode) {
+		for (var i = 0; i < d.rhomb.list.length; i++) {
+			var item = d.rhomb.list[i];
+			var dur = .8 + 1.2 * rn();
+			var delay = 0.5 + 0.5 * rn();
+			d.yoyoTl.push(gsap.to(item.el, dur, {
+				delay: delay,
+				scale: 0.7 + 0.2 * rn(),
+				yoyo: true,
+				repeat: -1
+			}));
+		}
+	} else {
+		for (var i = 0; i < d.rhomb.list.length; i++) {
+			console.log(d.yoyoTl[i])
+			d.yoyoTl[i].kill();
+			var item = d.rhomb.list[i];
+			gsap.to(item.el, 0.2, {
+				scale: 1
+			})
+			d.yoyoTl = [];
+		}
+	}
+}
+
+function rn() {
+	return Math.random();
+}
+
+function clickHappen(el, ev) {
+	// console.log(el, ev)
+	var px = el.pointerX;
+	var py = el.pointerY;
+
+
+	var count = 0;
+	var smallest_dist = 999999999;
+	var smallest_id = null;
+	for (var r = 0; r < d.rhomb.rows; r++) {
+		for (var c = 0; c < d.rhomb.cols; c++) {
+			var item = d.rhomb.list[count];
+			var dist = getDistToRhomb(r, c, item, count, px, py);
+			if (dist < smallest_dist) {
+				smallest_dist = dist;
+				smallest_id = count;
+			}
+			count++;
+		}
+	}
+
+	showProduct(smallest_id);
+}
+
+
+function getDistToRhomb(r, c, item, count, px, py) {
+	var x = d.anim.x + item.x + d.rhomb.size / 2;
+	var y = d.anim.y + item.y + d.rhomb.size / 2;
+
+	var dist = Math.pow(Math.pow(px - x, 2) + Math.pow(py - y, 2), 0.5)
+	return dist;
+}
+
+
+function changeBlockText(item) {
+	var block = o.block;
+	var ctaButton = o.ctaButton;
+	var gameInfo = o.gameInfo;
+	var teamAFlag = o.teamAFlag;
+	var teamAName = o.teamAName;
+	var teamBFlag = o.teamBFlag;
+	var teamBName = o.teamBName;
+	var playDate = o.playDate;
+	var playTime = o.playTime;
+	var gameOdds = o.gameOdds;
+	var flagUrlA = imageUrlReset(item.teams[0].team_image);
+	var flagUrlB = imageUrlReset(item.teams[1].team_image);
+
+	// dezero all
+	teamAName.innerHTML = "";
+	teamBName.innerHTML = "";
+	teamAFlag.style.backgroundImage = "";
+	teamBFlag.style.backgroundImage = "";
+	teamBName.innerHTML = "";
+	gameOdds.innerHTML = "";
+	playDate.innerHTML = "";
+	playTime.innerHTML = "";
+
+	var godd = ` ${item.odds.map(odd => `<div> ${odd} </div>`).join('') } `;
+
+	teamAName.innerHTML = item.teams[0].team_name;
+	teamBName.innerHTML = item.teams[1].team_name;
+	playDate.innerHTML = item.play_date;
+	playTime.innerHTML = item.play_time;
+	gameOdds.innerHTML = godd;
+	teamAFlag.style.backgroundImage = "url("+flagUrlA+")";
+	teamBFlag.style.backgroundImage = "url("+flagUrlB+")";
+
+}
+
+function createBlock() {
+	// console.log("createBlocks")
+
+	var item = p.list[0];
+
+	var block = o.block;
+	var ctaButton = o.ctaButton;
+	var gameInfo = o.gameInfo;
+	var teamAFlag = o.teamAFlag;
+	var teamAName = o.teamAName;
+	var teamBFlag = o.teamBFlag;
+	var teamBName = o.teamBName;
+	var playDate = o.playDate;
+	var playTime = o.playTime;
+	var gameOdds = o.gameOdds;
+
+	var teamAName_text = "";
+	var teamBName_text = "";
+
+	block.classList.add("rct");
+	block.classList.add("block");
+	block.classList.add("wrapper");
+	block.style.zIndex = d.zIndex;
+
+	// addText(teamAFlag, "", teamAName_text);
+	// addText(teamBFlag, "", teamBName_text);
+}
+
+function fixFontSize(el, maxH1, repeat) {
+	var computedFontSize = parseFloat(window.getComputedStyle(el).fontSize);
+	var counter = 0;
+	var reduce = 0.97;
+	var fixing = true;
+	var maxCount = 20;
+
+	while (fixing) {
+		var h = $(el).height();
+		if (h != 0) {
+			if (h < maxH1) {
+				fixing = false;
+			} else {
+				computedFontSize = reduce * computedFontSize;
+				el.style.fontSize = computedFontSize + "px";
+			}
+		}
+		if (counter > maxCount) fixing = false;
+		counter++;
+	}
+
+	setTimeout(function () {
+		fixFontSize(el, maxH1, false)
+	}, 20);
+
+}
+
+function addText(el, type, text) {
+	text = clearString(text);
+	if (ifNull(text)) {
+		el.style.display = "none";
+	} else {
+		el.style.display = "block";
+		// el.innerHTML = text;
+
+		switch (type) {
+			case "discountText":
+				//addToP(el, "Αρχική τιμή:", "p1");
+				addToP(el, text + " €", "p2");
+				break;
+			case "price":
+				//var res = text.split(".");
+				addToP(el, text + " €", "p1");
+				//addToP(el, res[1]+"€", "p2");
+				break;
+			case "discount":
+				addToP(el, "-" + text + "%", "p1");
+				break;
+			default:
+				addToP(el, text, "");
+				break;
+		}
+
+	}
+}
+
+function addToP(el, text, className) {
+	var para = document.createElement("p");
+	if (!ifNull(className)) para.classList.add(className);
+	var node = document.createTextNode(text);
+	para.appendChild(node);
+	el.appendChild(para);
+	return para;
+}
+
+function ifNull(text) {
+	if (text == "0" || text == 0 || text == null || text == "") {
+		// console.log(text, "null", "true")
+		return true;
+	} else {
+		// console.log(text, "null", "false")
+		return false;
+	}
+}
+
+function clearString(s) {
+	// s = s.replace("<!--[CDATA[", '');
+	// s = s.replace("]]-->", '');
+	// s = s.trim();
+	return s;
+}
+
+
+function clockLoop() {
+	requestAnimFrame(clockLoop);
+
+	var now = Date.now();
+	var dt = now - d.lastUpdate;
+	d.lastUpdate = now;
+	d.animPause += -dt;
+	d.aAnimPause += -dt;
+
+	// console.log(d.paused, d.animPause)
+	if (!d.paused && d.animPause < 0) {
+		var index = Math.floor(p.amm * Math.random());
+		showProduct(index);
+	}
+
+	if (d.aPaused && d.aAnimPause < 0) {
+		doPause2(false);
+	}
+}
+
+function doPause(mode) {
+	if (mode) {
+		// gsap.set(d.anim, {aPwr: 0})
+		d.paused = true;
+	} else {
+		d.paused = false;
+		d.animPause = d.pauseDur;
+		// gsap.to(d.anim, 0.5, {delay: 0.5, aPwr: 1})
+	}
+}
+
+function doPause2(mode) {
+	// console.log("doPause2", mode);
+	if (mode == true) {
+		d.anim.aPwr = 0;
+		d.aAnimPause = d.aPauseDur;
+		d.aPaused = true;
+	} else if (mode == false) {
+		d.anim.aPwr = 1;
+		d.aPaused = false;
+	} else if (mode == "idle") {
+		d.aPaused = false;
+		d.anim.aPwr = 0;
+	}
+}
+
+
+function addEvents(mode) {
+	if (mode) {
+		o.adArea.addEventListener("clickTag", tapFunction);
+	} else {
+		o.adArea.removeEventListener("clickTag", tapFunction);
+	}
+}
+
+
+
+/////////////////// D R A G ////////////////////////
+
+var dragFt = false;
+var ammDragged = 0;
+var myDraggable = [];
+var startX, startY;
+
+function initDrag(index) {
+	myDraggable.push(addDraggable(o.dragEl));
+}
+
+function addDraggable(dragObj, name) {
+
+	var drag = Draggable.create(dragObj, { //edgeResistance: 0.95, bounds: bounds, type:"x", 
+		onPress: function () {
+			onPress(this);
+		},
+		onDrag: function (e) {
+			onDrag(this, e);
+		},
+		onRelease: function (e) {
+			onRelease(this, e);
+		}
+	})
+
+	drag[0].name = name;
+	// drag[0].alt = alt;
+
+	return drag;
+}
+
+
+function onPress(el) {
+	if (!d.drag.ft) {
+		d.drag.ft = true;
+		// startEvent("started");
+		// gsap.to(o.pointer, 0.4, {opacity: 0})
+	}
+	doPause(true)
+	doPause2("idle");
+	var name = el.name;
+
+	gsap.to(o.cont, 0.5, {
+		scale: d.scale1,
+		ease: "power2.out"
+	})
+}
+
+function onDrag(el, e) {
+	var name = el.name;
+	ammDragged++;
+	// if(ammDragged > 30){
+	// if(d.arrowTl) d.arrowTl.kill();
+	// gsap.to(o.arrows, 0.5, {autoAlpha: 0})
+	// }
+
+	var left = parseFloat(el.target.style.left);
+	var top = parseFloat(el.target.style.top);
+
+	// d.drag.cur = el.x * d.drag.pwr;
+
+	d.drag.x = el.x;
+	d.drag.y = el.y;
+
+}
+
+function onRelease(el, ev) {
+	// doPause(false)
+	var curX = startX + el.x;
+	var curY = startY + el.y;
+
+	d.drag.sx += d.drag.x;
+	d.drag.sy += d.drag.y;
+	d.drag.x = 0;
+	d.drag.y = 0;
+
+	if (ammDragged == 0) {
+		clickHappen(el, ev)
+	} else {
+		doPause2(true);
+	}
+
+	ammDragged = 0;
+
+	d.drag.ax = 1.5 * d.drag.dx;
+	d.drag.ay = 1.5 * d.drag.dy;
+	d.drag.dx = 0;
+	d.drag.dy = 0;
+
+
+	gsap.to(o.cont, 0.5, {
+		scale: d.scale2,
+		ease: "power2.out"
+	})
+
+	gsap.to(d.drag, 0.4, {
+		ax: 0,
+		ay: 0,
+		ease: "power2.out"
+	});
+
+	gsap.set(el.target, {
+		x: 0,
+		y: 0,
+		scale: 1,
+		rotation: 0
+	})
+}
+
+
+
+
+
+
+
+
+
+
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+////////////////// F U N C T I O N S //////////////////////
+///////////////////////////
+
+
+function activateTap(mode) {
+	if (mode) {
+		o.select_btn.addEventListener("clickTag", tapFunction);
+	} else {
+		o.select_btn.removeEventListener("clickTag", tapFunction);
+	}
+}
+
+function activateButtons() {
+	o.adArea.addEventListener("clickTag", clickTag);
+	// o.clickArea0.addEventListener("click", ctaFunction);
+}
+
+function activateClose() {
+	o.closeBtn.addEventListener("clickTag", closePopup);
+}
+
+function removeButtons() {
+	o.adArea.removeEventListener("clickTag", clickTag);
+}
+
+/////////////////////////////
+
+function vibrate(array) {
+	try {
+		window.navigator.vibrate(array);
+	} catch (e) {}
+	// startEvent("vibrate");
+}
+
+function getCssProperty(elmId, property) {
+	var elem = document.getElementById(elmId);
+	return parseInt(window.getComputedStyle(elem, null).getPropertyValue(property));
+}
+
+function getTransformValue(element, property) {
+	var values = element.style.transform.split(")");
+	for (var key in values) {
+		var val = values[key];
+		var prop = val.split("(");
+		if (prop[0].trim() == property)
+			return prop[1];
+	}
+	return false;
+}
+
+function pitagor(a, b) {
+	return Math.pow((Math.pow(a, 2) + Math.pow(b, 2)), 0.5)
+}
+
+function easeInCubic(t) {
+	return t * t * t
+}
+
+window.requestAnimFrame = (function () {
+	return window.requestAnimationFrame ||
+		window.webkitRequestAnimationFrame ||
+		window.mozRequestAnimationFrame ||
+		window.oRequestAnimationFrame ||
+		window.msRequestAnimationFrame ||
+		function ( /* function */ callback, /* DOMElement */ element) {
+			window.setTimeout(callback, 1000 / 60);
+		};
+})();
+
+
+var assetsCur = 0;
+var assetsTotal = 0;
+var allLoaded = false;
+
+//
+
+function initLoad() {
+	prepareElements();
+	loadAsset(assets.init);
+}
+
+function prepareElements() {
+	// id
+	var names = oNames.id.split(' ');
+	for (var i = 0; i < names.length; i++) {
+		var name = names[i];
+		o[name] = document.getElementById(name);
+	};
+}
+
+
+function loadOther() {
+	assetsTotal = Object.size(assets);
+	// console.log("assetsTotal");
+	for (var prop in assets) {
+		if (prop != "init") {
+			loadAsset(assets[prop]);
+		}
+	}
+}
+
+function loadMid() {
+	loadAsset(assets.mid);
+}
+
+function loadEnd() {
+	loadAsset(assets.end);
+}
+
+function loadAsset(a) {
+	a.cur_asset_pack = 0;
+	a.asset_packs = a.length;
+
+	for (var k = 0; k < a.asset_packs; k++) {
+		var names = a[k].names.split(" ");
+		a[k].curLoad = 0;
+
+		// console.log( a[k] )
+
+		if (a[k].type == "seq") {
+
+
+			for (var z = a[k].start; z < a[k].start + a[k].amm; z++) {
+
+				var id = a[k].names + z;
+				// console.log("id", id)
+
+				var img = new Image();
+				img.myCustomData = {
+					name: a[k].names,
+					index: z,
+					id: id
+				};
+
+				img.onload = function () {
+
+					var div = document.createElement("div");
+					div.style.position = "absolute";
+					div.style.width = this.width + "px";
+					div.style.height = this.height + "px";
+					div.style.backgroundImage = "url(" + this.src + ")";
+					div.style.opacity = 0;
+					div.setAttribute("id", this.myCustomData.id)
+					o.seqAll.appendChild(div);
+
+					o[this.myCustomData.id] = div;
+
+				}
+
+				img.src = assets_url + a[k].folder + "/" + id + "." + a[k].format;
+
+			}
+
+		} else {
+			for (var i = 0; i < names.length; i++) {
+				var img = new Image();
+				img.myCustomData = {
+					total: names.length,
+					a: a,
+					name: names[i],
+					numb: k
+				};
+				img.onload = function () {
+					o[this.myCustomData.name] = document.getElementById(this.myCustomData.name);
+
+					var type = this.myCustomData.a[this.myCustomData.numb].type;
+					var elAmm = 1;
+					if (type == "class") {
+						o[this.myCustomData.name] = document.getElementsByClassName(this.myCustomData.name);
+						elAmm = o[this.myCustomData.name].length;
+					}
+
+					for (var j = 0; j < elAmm; j++) {
+						// console.log(this.myCustomData.name);
+						var el;
+						if (type == "class") {
+							el = o[this.myCustomData.name][j];
+							el.style.backgroundImage = "url(" + this.src + ")";
+						} else if (type == "id") {
+							el = o[this.myCustomData.name];
+							el.style.backgroundImage = "url(" + this.src + ")";
+						} else if (type == "src") {
+							// console.log( this.src );
+							el = o[this.myCustomData.name];
+							o[this.myCustomData.name].src = this.src;
+						}
+
+						el.style.position = "absolute";
+						el.style.width = this.width + "px";
+						el.style.height = this.height + "px";
+
+						if (this.myCustomData.a[this.myCustomData.numb].scale != 1) {
+							var scale = 1 / this.myCustomData.a[this.myCustomData.numb].scale;
+							TweenMax.set(el, {
+								scale: scale,
+								left: -this.width / 4,
+								top: -this.height / 4,
+								transformOrigin: '50% 50%'
+							});
+						}
+					}
+
+					countAsset(this.myCustomData.a, this.myCustomData.numb, this.myCustomData.total);
+				};
+				img.src = assets_url + names[i] + "." + a[k].format;
+			}
+		}
+	}
+}
+
+function countAsset(asset, o, total) {
+	// console.log( "countAsset", asset[o].curLoad, total );
+
+	asset[o].curLoad++;
+	if (asset[o].curLoad == (total)) {
+		// console.log("proceed", asset.cur_asset_pack, asset.asset_packs)
+		asset.cur_asset_pack++;
+		// console.log( asset.cur_asset_pack, asset.asset_packs )
+		if (asset.cur_asset_pack == (asset.asset_packs)) {
+			assetSetLoaded();
+		}
+	}
+}
+
+function assetSetLoaded() {
+	// console.log("assetSetLoaded");
+	assetsCur++;
+	if (assetsCur == 1) {
+		// adArea.style.opacity = 1;
+		init();
+		TweenMax.to(adArea, 0.3, {
+			delay: 0.05,
+			opacity: 1
+		});
+		// loadMid();
+		loadOther();
+		// } else if(assetsCur == 2) {
+		// loadEnd();
+
+	} else if (assetsCur == assetsTotal) {
+		allLoaded = true;
+	}
+}
+
+//
+
+Object.size = function (obj) { // get objects ammount in var
+	var size = 0,
+		key;
+	for (key in obj) {
+		if (obj.hasOwnProperty(key)) size++;
+	}
+	return size;
+};
+
+
+if (window.addEventListener) {
+	window.addEventListener('load', initLoad(), false);
+} else if (window.attachEvent) {
+	window.attachEvent('onload', initLoad());
+}

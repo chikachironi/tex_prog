@@ -1,0 +1,1179 @@
+
+<!-- saved from url=(0061)https://s0.2mdn.net/sadbundle/16045649664978919899/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="ad.size" content="width=728,height=90">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+	<link href="./css2(1)" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./mystyle.css">
+	<script type="text/javascript" src="./jquery-3.5.1.min.js.Без названия"></script>
+	<script type="text/javascript" src="./gsap.min.js.Без названия"></script>
+	<script type="text/javascript" src="./Draggable.min.js.Без названия"></script>
+	<script type="text/javascript" src="./products.js.Без названия"></script>
+<script type="text/javascript">
+    
+  (function() {
+    var MAX_URL_PARAM_LENGTH = 34;
+    var CLICK_X_URL_KEY = 'nx';
+    var CLICK_Y_URL_KEY = 'ny';
+    var CREATIVE_DIMENSIONS_KEY = 'dim';
+    var AD_URL_PARAM = '&adurl=';
+
+    var relegateNavigation = '';
+    var urlParamMap = {};
+
+    urlParamMap[CLICK_X_URL_KEY] = null;
+    urlParamMap[CLICK_Y_URL_KEY] = null;
+    urlParamMap[CREATIVE_DIMENSIONS_KEY] = null;
+
+    var handleClickTagMessage = function(e) {
+      try {
+        var eventData = JSON.parse(e.data);
+      } catch (err) {
+        return;
+      }
+      if (eventData.isInitClickTag) {
+        if (eventData.clickTags) {
+          for (var i = 0; i < eventData.clickTags.length; i++) {
+            var clkTag = eventData.clickTags[i];
+            window[clkTag.name] = clkTag.url;
+          }
+        } else if (eventData.clickTag) {
+          window.clickTag = eventData.clickTag;
+        }
+        relegateNavigation = eventData.relegateNavigation;
+      }
+    };
+
+    var storeClickCoordinates = function(e) {
+      urlParamMap[CLICK_X_URL_KEY] = Math.round(e.clientX);
+      urlParamMap[CLICK_Y_URL_KEY] = Math.round(e.clientY);
+    };
+
+    var getCreativeDimensions = function() {
+      return window.innerWidth + 'x' + window.innerHeight;
+    }
+
+    var getExitClickParams = function(e) {
+      urlParamMap[CREATIVE_DIMENSIONS_KEY] = getCreativeDimensions();
+
+      var exitParams = '';
+      for (var key in urlParamMap) {
+        exitParams += '&' + key + '=';
+        if (urlParamMap[key] !== null) {
+          exitParams += urlParamMap[key];
+        }
+      }
+      return exitParams;
+    }
+
+    var appendExitClickParams = function(url) {
+      var adUrlIndex = url.toLowerCase().indexOf(AD_URL_PARAM);
+      var paramsToBeAdded = getExitClickParams();
+      if (adUrlIndex > -1 && paramsToBeAdded.length <= MAX_URL_PARAM_LENGTH) {
+        url = url.substr(0, adUrlIndex) + paramsToBeAdded +
+          url.substr(adUrlIndex);
+      };
+      return url;
+    };
+
+    if (open.call) {
+      window.open = function(open) {
+        return function(url, name, features) {
+          url = appendExitClickParams(url);
+          if (relegateNavigation === 'parent') {
+            var message = {'clickTag': url, 'isPostClickTag': true};
+            parent.postMessage(JSON.stringify(message), '*');
+          } else {
+            var args = [url, name];
+            if (features) {
+              args.push(features);
+            }
+            open.apply(window, args);
+          }
+        };
+      }(window.open);
+    }
+
+    if (window.addEventListener) {
+      window.addEventListener(
+          'message', handleClickTagMessage, false);
+      window.addEventListener('mousedown', storeClickCoordinates, true);
+    } else {
+      window.attachEvent('onmessage', handleClickTagMessage);
+    }
+  })();
+    
+  </script></head>
+
+<body>
+
+	<div id="adArea" class="rct wrapper opacity0 noSelect" style="opacity: 1;">
+
+		<div id="loaderCont" class="rct opacity0" style="transform: scale(0.5, 0.5); opacity: 1; display: none;">
+			<div id="loader" class=""></div>
+		</div>
+
+		<div id="cont" class="rct" style="transform: translate(-45px, -211px) scale(1.2, 1.2); transform-origin: 409px 256px;"><div class="rhomb" alt="0" pid="9357838" style="z-index: 1000; width: 100px; height: 100px; transform: translate(50px, 462px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4555.png)"></p>
+					<p class="teamName">Япония</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5905.png)"></p>
+					<p class="teamName">Хорватия</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">05.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="1" pid="9353751" style="z-index: 1000; width: 100px; height: 100px; transform: translate(153px, 412px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5888.png)"></p>
+					<p class="teamName">Франция</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5970.png)"></p>
+					<p class="teamName">Польша</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">04.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="2" pid="9353751" style="z-index: 1000; width: 100px; height: 100px; transform: translate(256px, 462px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5888.png)"></p>
+					<p class="teamName">Франция</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5970.png)"></p>
+					<p class="teamName">Польша</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">04.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="3" pid="9357841" style="z-index: 1000; width: 100px; height: 100px; transform: translate(359px, 412px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR9732.png)"></p>
+					<p class="teamName">Марокко</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5883.png)"></p>
+					<p class="teamName">Испания</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">06.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="4" pid="9361611" style="z-index: 1000; width: 100px; height: 100px; transform: translate(462px, 462px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4535.png)"></p>
+					<p class="teamName">Бразилия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4511.png)"></p>
+					<p class="teamName">Республика Корея</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">05.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="5" pid="9357838" style="z-index: 1000; width: 100px; height: 100px; transform: translate(565px, 412px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4555.png)"></p>
+					<p class="teamName">Япония</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5905.png)"></p>
+					<p class="teamName">Хорватия</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">05.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="6" pid="9361610" style="z-index: 1000; width: 100px; height: 100px; transform: translate(668px, 462px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5973.png)"></p>
+					<p class="teamName">Португалия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5858.png)"></p>
+					<p class="teamName">Швейцария</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">06.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="7" pid="9349675" style="z-index: 1000; width: 100px; height: 100px; transform: translate(771px, 412px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5881.png)"></p>
+					<p class="teamName">Англия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR9749.png)"></p>
+					<p class="teamName">Сенегал</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">04.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="8" pid="9361610" style="z-index: 1000; width: 100px; height: 100px; transform: translate(874px, 462px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5973.png)"></p>
+					<p class="teamName">Португалия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5858.png)"></p>
+					<p class="teamName">Швейцария</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">06.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="9" pid="9349673" style="z-index: 1000; width: 100px; height: 100px; transform: translate(977px, 412px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5960.png)"></p>
+					<p class="teamName">Нидерланды</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4509.png)"></p>
+					<p class="teamName">США</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">03.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="10" pid="9353742" style="z-index: 1000; width: 100px; height: 100px; transform: translate(-156px, 462px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4478.png)"></p>
+					<p class="teamName">Аргентина</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR7748.png)"></p>
+					<p class="teamName">Австралия</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">03.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="11" pid="9357838" style="z-index: 1000; width: 100px; height: 100px; transform: translate(-53px, 412px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4555.png)"></p>
+					<p class="teamName">Япония</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5905.png)"></p>
+					<p class="teamName">Хорватия</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">05.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="12" pid="9349673" style="z-index: 1000; width: 100px; height: 100px; transform: translate(50px, 153px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5960.png)"></p>
+					<p class="teamName">Нидерланды</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4509.png)"></p>
+					<p class="teamName">США</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">03.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="13" pid="9349675" style="z-index: 1000; width: 100px; height: 100px; transform: translate(153px, 103px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5881.png)"></p>
+					<p class="teamName">Англия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR9749.png)"></p>
+					<p class="teamName">Сенегал</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">04.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="14" pid="9357841" style="z-index: 1000; width: 100px; height: 100px; transform: translate(256px, 153px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR9732.png)"></p>
+					<p class="teamName">Марокко</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5883.png)"></p>
+					<p class="teamName">Испания</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">06.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="15" pid="9353751" style="z-index: 1000; width: 100px; height: 100px; transform: translate(359px, 103px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5888.png)"></p>
+					<p class="teamName">Франция</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5970.png)"></p>
+					<p class="teamName">Польша</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">04.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="16" pid="9353742" style="z-index: 1000; width: 100px; height: 100px; transform: translate(462px, 153px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4478.png)"></p>
+					<p class="teamName">Аргентина</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR7748.png)"></p>
+					<p class="teamName">Австралия</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">03.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="17" pid="9349673" style="z-index: 1000; width: 100px; height: 100px; transform: translate(565px, 103px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5960.png)"></p>
+					<p class="teamName">Нидерланды</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4509.png)"></p>
+					<p class="teamName">США</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">03.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="18" pid="9353742" style="z-index: 1000; width: 100px; height: 100px; transform: translate(668px, 153px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4478.png)"></p>
+					<p class="teamName">Аргентина</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR7748.png)"></p>
+					<p class="teamName">Австралия</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">03.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="19" pid="9349673" style="z-index: 1000; width: 100px; height: 100px; transform: translate(771px, 103px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5960.png)"></p>
+					<p class="teamName">Нидерланды</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4509.png)"></p>
+					<p class="teamName">США</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">03.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="20" pid="9353742" style="z-index: 1000; width: 100px; height: 100px; transform: translate(874px, 153px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4478.png)"></p>
+					<p class="teamName">Аргентина</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR7748.png)"></p>
+					<p class="teamName">Австралия</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">03.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="21" pid="9353751" style="z-index: 1000; width: 100px; height: 100px; transform: translate(977px, 103px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5888.png)"></p>
+					<p class="teamName">Франция</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5970.png)"></p>
+					<p class="teamName">Польша</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">04.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="22" pid="9353742" style="z-index: 1000; width: 100px; height: 100px; transform: translate(-156px, 153px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4478.png)"></p>
+					<p class="teamName">Аргентина</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR7748.png)"></p>
+					<p class="teamName">Австралия</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">03.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="23" pid="9361610" style="z-index: 1000; width: 100px; height: 100px; transform: translate(-53px, 103px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5973.png)"></p>
+					<p class="teamName">Португалия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5858.png)"></p>
+					<p class="teamName">Швейцария</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">06.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="24" pid="9361611" style="z-index: 1000; width: 100px; height: 100px; transform: translate(50px, 256px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4535.png)"></p>
+					<p class="teamName">Бразилия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4511.png)"></p>
+					<p class="teamName">Республика Корея</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">05.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="25" pid="9361611" style="z-index: 1000; width: 100px; height: 100px; transform: translate(153px, 206px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4535.png)"></p>
+					<p class="teamName">Бразилия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4511.png)"></p>
+					<p class="teamName">Республика Корея</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">05.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="26" pid="9361610" style="z-index: 1000; width: 100px; height: 100px; transform: translate(256px, 256px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5973.png)"></p>
+					<p class="teamName">Португалия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5858.png)"></p>
+					<p class="teamName">Швейцария</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">06.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="27" pid="9349675" style="z-index: 1001; width: 100px; height: 100px; transform: translate(359px, 206px) scale(4.5, 4.5);"><div class="pic abs" style="opacity: 0; transform: translate(-4.5px, -4.5px) scale(0, 0);">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5881.png)"></p>
+					<p class="teamName">Англия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR9749.png)"></p>
+					<p class="teamName">Сенегал</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">04.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="28" pid="9349675" style="z-index: 1000; width: 100px; height: 100px; transform: translate(462px, 256px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5881.png)"></p>
+					<p class="teamName">Англия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR9749.png)"></p>
+					<p class="teamName">Сенегал</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">04.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="29" pid="9349675" style="z-index: 1000; width: 100px; height: 100px; transform: translate(565px, 206px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5881.png)"></p>
+					<p class="teamName">Англия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR9749.png)"></p>
+					<p class="teamName">Сенегал</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">04.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="30" pid="9361611" style="z-index: 1000; width: 100px; height: 100px; transform: translate(668px, 256px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4535.png)"></p>
+					<p class="teamName">Бразилия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4511.png)"></p>
+					<p class="teamName">Республика Корея</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">05.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="31" pid="9357841" style="z-index: 1000; width: 100px; height: 100px; transform: translate(771px, 206px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR9732.png)"></p>
+					<p class="teamName">Марокко</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5883.png)"></p>
+					<p class="teamName">Испания</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">06.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="32" pid="9349675" style="z-index: 1000; width: 100px; height: 100px; transform: translate(874px, 256px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5881.png)"></p>
+					<p class="teamName">Англия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR9749.png)"></p>
+					<p class="teamName">Сенегал</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">04.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="33" pid="9361611" style="z-index: 1000; width: 100px; height: 100px; transform: translate(977px, 206px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4535.png)"></p>
+					<p class="teamName">Бразилия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4511.png)"></p>
+					<p class="teamName">Республика Корея</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">05.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="34" pid="9353742" style="z-index: 1000; width: 100px; height: 100px; transform: translate(-156px, 256px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4478.png)"></p>
+					<p class="teamName">Аргентина</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR7748.png)"></p>
+					<p class="teamName">Австралия</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">03.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="35" pid="9361611" style="z-index: 1000; width: 100px; height: 100px; transform: translate(-53px, 206px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4535.png)"></p>
+					<p class="teamName">Бразилия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4511.png)"></p>
+					<p class="teamName">Республика Корея</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">05.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="36" pid="9357838" style="z-index: 1000; width: 100px; height: 100px; transform: translate(50px, 359px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4555.png)"></p>
+					<p class="teamName">Япония</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5905.png)"></p>
+					<p class="teamName">Хорватия</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">05.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="37" pid="9353751" style="z-index: 1000; width: 100px; height: 100px; transform: translate(153px, 309px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5888.png)"></p>
+					<p class="teamName">Франция</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5970.png)"></p>
+					<p class="teamName">Польша</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">04.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="38" pid="9349673" style="z-index: 1000; width: 100px; height: 100px; transform: translate(256px, 359px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5960.png)"></p>
+					<p class="teamName">Нидерланды</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4509.png)"></p>
+					<p class="teamName">США</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">03.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="39" pid="9357838" style="z-index: 1000; width: 100px; height: 100px; transform: translate(359px, 309px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4555.png)"></p>
+					<p class="teamName">Япония</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5905.png)"></p>
+					<p class="teamName">Хорватия</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">05.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="40" pid="9349673" style="z-index: 1000; width: 100px; height: 100px; transform: translate(462px, 359px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5960.png)"></p>
+					<p class="teamName">Нидерланды</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4509.png)"></p>
+					<p class="teamName">США</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">03.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="41" pid="9357838" style="z-index: 1000; width: 100px; height: 100px; transform: translate(565px, 309px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR4555.png)"></p>
+					<p class="teamName">Япония</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5905.png)"></p>
+					<p class="teamName">Хорватия</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">05.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="42" pid="9357841" style="z-index: 1000; width: 100px; height: 100px; transform: translate(668px, 359px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR9732.png)"></p>
+					<p class="teamName">Марокко</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5883.png)"></p>
+					<p class="teamName">Испания</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">06.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="43" pid="9353751" style="z-index: 1000; width: 100px; height: 100px; transform: translate(771px, 309px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5888.png)"></p>
+					<p class="teamName">Франция</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5970.png)"></p>
+					<p class="teamName">Польша</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">04.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="44" pid="9357841" style="z-index: 1000; width: 100px; height: 100px; transform: translate(874px, 359px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR9732.png)"></p>
+					<p class="teamName">Марокко</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5883.png)"></p>
+					<p class="teamName">Испания</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">06.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="45" pid="9361610" style="z-index: 1000; width: 100px; height: 100px; transform: translate(977px, 309px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5973.png)"></p>
+					<p class="teamName">Португалия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5858.png)"></p>
+					<p class="teamName">Швейцария</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">06.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="46" pid="9357841" style="z-index: 1000; width: 100px; height: 100px; transform: translate(-156px, 359px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR9732.png)"></p>
+					<p class="teamName">Марокко</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5883.png)"></p>
+					<p class="teamName">Испания</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">06.12.2022</div>
+				<div class="playTime">18:00</div>
+			</div>
+		</div>
+	</div></div><div class="rhomb" alt="47" pid="9361610" style="z-index: 1000; width: 100px; height: 100px; transform: translate(-53px, 309px);"><div class="pic abs">
+		<div class="gameInfo">
+			<div class="teamInfo">
+				<div class="teamA">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5973.png)"></p>
+					<p class="teamName">Португалия</p>
+				</div>
+				<div class="teamVs"></div>
+				<div class="teamB">
+					<p class="teamFlag" style="background-image:url(images/flag/PR5858.png)"></p>
+					<p class="teamName">Швейцария</p>
+				</div>
+			</div>
+			<div class="gameSchedule">
+				<div class="playDate">06.12.2022</div>
+				<div class="playTime">22:00</div>
+			</div>
+		</div>
+	</div></div></div>
+
+		<div id="block" class="rct zi8 noDisplay block wrapper" style="z-index: 1000; display: block; opacity: 0;">
+			<div id="gameInfo">
+				<div class="teamInfo">
+					<div id="teamA" style="opacity: 1; transform: scale(0.8, 0.8);">
+						<div id="teamAFlag" class="teamFlag" style="background-image: url(&quot;images/flag/PR5881.png&quot;);"></div>
+						<div id="teamAName" class="teamName">Англия</div>
+					</div>
+					<div id="teamVs" class="teamVs"></div>
+					<div id="teamB" style="opacity: 1; transform: scale(0.8, 0.8);">
+						<div id="teamBFlag" class="teamFlag" style="background-image: url(&quot;images/flag/PR9749.png&quot;);"></div>
+						<div id="teamBName" class="teamName">Сенегал</div>
+					</div>
+				</div>
+				<div id="gameSchedule" class="">
+					<div id="playDate" style="opacity: 1; transform: translate(0px, 300px) scale(0.8, 0.8);">04.12.2022</div>
+					<div id="playTime" style="opacity: 1; transform: translate(0px, 300px) scale(0.8, 0.8);">22:00</div>
+				</div>
+				<div id="gameOdds" class="" style="opacity: 1; transform: translate(0px, -45px) scale(0.8, 0.8);"> <div> 1.53 </div><div> 3.9 </div><div> 7.9 </div> </div>
+			</div>
+<a href="javascript:void(window.open(clickTag))">
+			
+		</a>
+		</div>
+
+		<div id="dragEl" class="zi9 rct" style="user-select: text; touch-action: none; cursor: grab;"></div>
+
+		<div id="ctaArea" class="zi95 rct noDisplay" style="display: none;"></div>
+
+		<div id="logo_bg" class="zi10 logos noDisplay noEvents" style="background-image: url(&quot;https://s0.2mdn.net/sadbundle/16045649664978919899/images/logo_bg.png&quot;); position: absolute; width: 300px; height: 250px; display: block; transform: translate(0px, 0px);"></div>
+
+		<div id="logo" class="zi10 logos noDisplay abs" style="top: 0px; left: 0px; display: block; transform: translate(0px, 0px);"> </div>
+
+		<div id="border" class="rct noEvents"></div>
+	</div>
+
+	<script>
+		// L O A D    I M A G E S
+
+		var assets_url = "images/";
+		
+
+		var assets = {
+			init: [{
+				format: "png",
+				type: "id",
+				scale: 1,
+				names: "logo_bg"
+			}, ],
+			end: [
+				// {
+				//   format: "png",
+				//   type: "id",
+				//   scale: 1,
+				//   names: "logo"
+				// },
+			]
+		}
+
+		function setVars() {
+			d = {
+				curUrl: null,
+				curPid: null,
+				ft: false,
+				tls: [],
+				list: [],
+				yoyoTl: [],
+				cur: 0,
+				zIndex: 1000,
+				stopLoop: false,
+				scale0: 4,
+				scale1: 0.95, // 0.95
+				scale2: 1.2, // 1.2
+				rhomb: {
+					x0: 0.5,
+					y0: 0.5,
+					// x0: -0.5,
+					// y0: -0.5,
+					amm: 10,
+					size: 100,
+					radius: 0.05,
+					cols: 12, // четные числа
+					rows: 4,
+					margin: 0.75,
+					list: [],
+				},
+				anim: {
+					x: 0,
+					lx: 0,
+					y: 0,
+					ly: 0,
+					sx: 0,
+					sy: 0,
+					ax: 0,
+					ay: 0,
+					lax: 0,
+					lay: 0,
+					aPwr: 1,
+					xInc: 0.0,
+					yInc: 0.0,
+				},
+				drag: {
+					ft: false,
+					x: 0,
+					y: 0,
+					sx: 0,
+					sy: 0,
+					cx: 0,
+					cy: 0,
+					dx: 0,
+					dy: 0,
+					lx: 0,
+					ly: 0,
+					ax: 0,
+					ay: 0,
+				},
+				lastUpdate: Date.now(),
+				animPause: 5000,
+				pauseDur: 5000,
+				paused: false,
+				aPaused: true,
+				aPauseDur: 500,
+				aAnimPause: 500,
+			}
+		}
+
+		function init() {
+			setVars();
+			var FEED_URL = "";
+			// var FEED_URL = "facebook.xml/";
+			p.amm = d.rhomb.cols * d.rhomb.rows; // tmp, позже мы уменьшим размер продукта.
+
+			gsap.set("#loaderCont", {
+				scale: 0
+			});
+			gsap.to("#loaderCont", 0.4, {
+				delay: 0.1,
+				scale: 0.5,
+				opacity: 1,
+				ease: "power2.out"
+			});
+
+			extractData(products);
+			loadImages();
+
+			function extractData(data) {
+				var items = data.sort(() => Math.random() - 0.5);
+				// var filterItems = items.filter( (item) => !ifNull(item.badge) && !ifNull(item.new_price) );
+
+				for (var i = 0; i < p.amm ; i++) {
+					p.list.push(items[i]);
+				}
+			}
+		}
+
+		function loadImages() {
+			var plength = Math.round(( p.list.length / 3 ) * 2);
+			p.list.forEach(function (item, index) {
+				
+				item.teams.forEach(function (el, i) {
+					//console.log(el)
+
+					var newImg = new Image;
+					newImg.onload = function () {
+
+						item.src = this.team_image;
+						p.loaded++;
+
+						// if (p.loaded == 2) init_next();
+					}
+					newImg.src = el.team_image;
+				})
+
+			});
+
+			init_next();
+		}
+
+
+
+
+		var clickTag = "https://z.cdn.adpool.bet/go?z=2133624695";
+
+
+
+
+	</script>
+
+	<script src="./code.js.Без названия"></script>
+
+
+
+
+</body></html>

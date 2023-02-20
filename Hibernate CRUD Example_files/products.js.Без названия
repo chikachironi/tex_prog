@@ -1,0 +1,852 @@
+var products = [
+   
+// Play-offs
+
+
+{
+   "id": "9349673",
+   "teams": [{
+      "team_id": "23114",
+      "team_name": "Нидерланды",
+      "team_image": "PR5960.png"
+   }, {
+      "team_id": "14509",
+      "team_name": "США",
+      "team_image": "PR4509.png"
+   }],
+   "odds": [2.00, 3.30, 4.50],
+   "play_date": "03.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/netherlands-usa-9349673"
+}, 
+
+
+
+{
+   "id": "9353742",
+   "teams": [{
+      "team_id": "14478",
+      "team_name": "Аргентина",
+      "team_image": "PR4478.png"
+   }, {
+      "team_id": "17748",
+      "team_name": "Австралия",
+      "team_image": "PR7748.png"
+   }],
+   "odds": [1.22, 6.80, 17.50],
+   "play_date": "03.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/argentina-australia-9353742"
+}, 
+
+{
+   "id": "9353751",
+   "teams": [{
+      "team_id": "3587",
+      "team_name": "Франция",
+      "team_image": "PR5888.png"
+   }, {
+      "team_id": "3853",
+      "team_name": "Польша",
+      "team_image": "PR5970.png"
+   }],
+   "odds": [1.28, 5.60, 12.50],
+   "play_date": "04.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/france-poland-9353751"
+}, 
+
+{
+   "id": "9349675",
+   "teams": [{
+      "team_id": "612",
+      "team_name": "Англия",
+      "team_image": "PR5881.png"
+   }, {
+      "team_id": "19749",
+      "team_name": "Сенегал",
+      "team_image": "PR9749.png"
+   }],
+   "odds": [1.53, 3.90, 7.90],
+   "play_date": "04.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/england-senegal-9349675"
+}, 
+
+{
+   "id": "9357838",
+   "teams": [{
+      "team_id": "14555",
+      "team_name": "Япония",
+      "team_image": "PR4555.png"
+   }, {
+      "team_id": "30",
+      "team_name": "Хорватия",
+      "team_image": "PR5905.png"
+   }],
+   "odds": [3.90, 3.30, 2.10],
+   "play_date": "05.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/japan-croatia-9357838"
+}, 
+
+{
+   "id": "9357841",
+   "teams": [{
+      "team_id": "19732",
+      "team_name": "Марокко",
+      "team_image": "PR9732.png"
+   }, {
+      "team_id": "1169",
+      "team_name": "Испания",
+      "team_image": "PR5883.png"
+   }],
+   "odds": [7.00, 3.95, 1.57],
+   "play_date": "06.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/morocco-spain-9357841"
+}, 
+
+/// 2 match
+{
+   "id": "9361611",
+   "teams": [{
+      "team_id": "14535",
+      "team_name": "Бразилия",
+      "team_image": "PR4535.png"
+   }, {
+      "team_id": "14511",
+      "team_name": "Республика Корея",
+      "team_image": "PR4511.png"
+   }],
+   "odds": [1.27, 6.10, 12.50],
+   "play_date": "05.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/brazil-korea-republic-9361611"
+}, 
+
+{
+   "id": "9361610",
+   "teams": [{
+      "team_id": "4649",
+      "team_name": "Португалия",
+      "team_image": "PR5973.png"
+   }, {
+      "team_id": "4868",
+      "team_name": "Швейцария",
+      "team_image": "PR5858.png"
+   }],
+   "odds": [1.91, 3.40, 4.60],
+   "play_date": "06.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/portugal-switzerland-9361610"
+}, 
+
+/// 2 match off
+
+
+{
+   "id": "9357841",
+   "teams": [{
+      "team_id": "19732",
+      "team_name": "Марокко",
+      "team_image": "PR9732.png"
+   }, {
+      "team_id": "1169",
+      "team_name": "Испания",
+      "team_image": "PR5883.png"
+   }],
+   "odds": [7.00, 3.95, 1.57],
+   "play_date": "06.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/morocco-spain-9357841"
+}, 
+
+
+
+{
+   "id": "9357838",
+   "teams": [{
+      "team_id": "14555",
+      "team_name": "Япония",
+      "team_image": "PR4555.png"
+   }, {
+      "team_id": "30",
+      "team_name": "Хорватия",
+      "team_image": "PR5905.png"
+   }],
+   "odds": [3.90, 3.30, 2.10],
+   "play_date": "05.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/japan-croatia-9357838"
+}, 
+
+{
+   "id": "9349675",
+   "teams": [{
+      "team_id": "612",
+      "team_name": "Англия",
+      "team_image": "PR5881.png"
+   }, {
+      "team_id": "19749",
+      "team_name": "Сенегал",
+      "team_image": "PR9749.png"
+   }],
+   "odds": [1.53, 3.90, 7.90],
+   "play_date": "04.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/england-senegal-9349675"
+}, 
+
+{
+   "id": "9353751",
+   "teams": [{
+      "team_id": "3587",
+      "team_name": "Франция",
+      "team_image": "PR5888.png"
+   }, {
+      "team_id": "3853",
+      "team_name": "Польша",
+      "team_image": "PR5970.png"
+   }],
+   "odds": [1.28, 5.60, 12.50],
+   "play_date": "04.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/france-poland-9353751"
+}, 
+
+{
+   "id": "9353742",
+   "teams": [{
+      "team_id": "14478",
+      "team_name": "Аргентина",
+      "team_image": "PR4478.png"
+   }, {
+      "team_id": "17748",
+      "team_name": "Австралия",
+      "team_image": "PR7748.png"
+   }],
+   "odds": [1.22, 6.80, 17.50],
+   "play_date": "03.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/argentina-australia-9353742"
+}, 
+
+{
+   "id": "9349673",
+   "teams": [{
+      "team_id": "23114",
+      "team_name": "Нидерланды",
+      "team_image": "PR5960.png"
+   }, {
+      "team_id": "14509",
+      "team_name": "США",
+      "team_image": "PR4509.png"
+   }],
+   "odds": [2.00, 3.30, 4.50],
+   "play_date": "03.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/netherlands-usa-9349673"
+}, 
+
+/// 2 match
+{
+   "id": "9361611",
+   "teams": [{
+      "team_id": "14535",
+      "team_name": "Бразилия",
+      "team_image": "PR4535.png"
+   }, {
+      "team_id": "14511",
+      "team_name": "Республика Корея",
+      "team_image": "PR4511.png"
+   }],
+   "odds": [1.27, 6.10, 12.50],
+   "play_date": "05.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/brazil-korea-republic-9361611"
+}, 
+
+{
+   "id": "9361610",
+   "teams": [{
+      "team_id": "4649",
+      "team_name": "Португалия",
+      "team_image": "PR5973.png"
+   }, {
+      "team_id": "4868",
+      "team_name": "Швейцария",
+      "team_image": "PR5858.png"
+   }],
+   "odds": [1.91, 3.40, 4.60],
+   "play_date": "06.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/portugal-switzerland-9361610"
+}, 
+
+/// 2 match off
+{
+   "id": "9349673",
+   "teams": [{
+      "team_id": "23114",
+      "team_name": "Нидерланды",
+      "team_image": "PR5960.png"
+   }, {
+      "team_id": "14509",
+      "team_name": "США",
+      "team_image": "PR4509.png"
+   }],
+   "odds": [2.00, 3.30, 4.50],
+   "play_date": "03.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/netherlands-usa-9349673"
+}, 
+
+
+
+{
+   "id": "9353742",
+   "teams": [{
+      "team_id": "14478",
+      "team_name": "Аргентина",
+      "team_image": "PR4478.png"
+   }, {
+      "team_id": "17748",
+      "team_name": "Австралия",
+      "team_image": "PR7748.png"
+   }],
+   "odds": [1.22, 6.80, 17.50],
+   "play_date": "03.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/argentina-australia-9353742"
+}, 
+
+{
+   "id": "9353751",
+   "teams": [{
+      "team_id": "3587",
+      "team_name": "Франция",
+      "team_image": "PR5888.png"
+   }, {
+      "team_id": "3853",
+      "team_name": "Польша",
+      "team_image": "PR5970.png"
+   }],
+   "odds": [1.28, 5.60, 12.50],
+   "play_date": "04.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/france-poland-9353751"
+}, 
+
+{
+   "id": "9349675",
+   "teams": [{
+      "team_id": "612",
+      "team_name": "Англия",
+      "team_image": "PR5881.png"
+   }, {
+      "team_id": "19749",
+      "team_name": "Сенегал",
+      "team_image": "PR9749.png"
+   }],
+   "odds": [1.53, 3.90, 7.90],
+   "play_date": "04.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/england-senegal-9349675"
+}, 
+
+{
+   "id": "9357838",
+   "teams": [{
+      "team_id": "14555",
+      "team_name": "Япония",
+      "team_image": "PR4555.png"
+   }, {
+      "team_id": "30",
+      "team_name": "Хорватия",
+      "team_image": "PR5905.png"
+   }],
+   "odds": [3.90, 3.30, 2.10],
+   "play_date": "05.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/japan-croatia-9357838"
+}, 
+
+{
+   "id": "9357841",
+   "teams": [{
+      "team_id": "19732",
+      "team_name": "Марокко",
+      "team_image": "PR9732.png"
+   }, {
+      "team_id": "1169",
+      "team_name": "Испания",
+      "team_image": "PR5883.png"
+   }],
+   "odds": [7.00, 3.95, 1.57],
+   "play_date": "06.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/morocco-spain-9357841"
+}, 
+
+/// 2 match
+{
+   "id": "9361611",
+   "teams": [{
+      "team_id": "14535",
+      "team_name": "Бразилия",
+      "team_image": "PR4535.png"
+   }, {
+      "team_id": "14511",
+      "team_name": "Республика Корея",
+      "team_image": "PR4511.png"
+   }],
+   "odds": [1.27, 6.10, 12.50],
+   "play_date": "05.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/brazil-korea-republic-9361611"
+}, 
+
+{
+   "id": "9361610",
+   "teams": [{
+      "team_id": "4649",
+      "team_name": "Португалия",
+      "team_image": "PR5973.png"
+   }, {
+      "team_id": "4868",
+      "team_name": "Швейцария",
+      "team_image": "PR5858.png"
+   }],
+   "odds": [1.91, 3.40, 4.60],
+   "play_date": "06.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/portugal-switzerland-9361610"
+}, 
+
+/// 2 match off
+{
+   "id": "9349673",
+   "teams": [{
+      "team_id": "23114",
+      "team_name": "Нидерланды",
+      "team_image": "PR5960.png"
+   }, {
+      "team_id": "14509",
+      "team_name": "США",
+      "team_image": "PR4509.png"
+   }],
+   "odds": [2.00, 3.30, 4.50],
+   "play_date": "03.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/netherlands-usa-9349673"
+}, 
+
+
+
+{
+   "id": "9353742",
+   "teams": [{
+      "team_id": "14478",
+      "team_name": "Аргентина",
+      "team_image": "PR4478.png"
+   }, {
+      "team_id": "17748",
+      "team_name": "Австралия",
+      "team_image": "PR7748.png"
+   }],
+   "odds": [1.22, 6.80, 17.50],
+   "play_date": "03.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/argentina-australia-9353742"
+}, 
+
+{
+   "id": "9353751",
+   "teams": [{
+      "team_id": "3587",
+      "team_name": "Франция",
+      "team_image": "PR5888.png"
+   }, {
+      "team_id": "3853",
+      "team_name": "Польша",
+      "team_image": "PR5970.png"
+   }],
+   "odds": [1.28, 5.60, 12.50],
+   "play_date": "04.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/france-poland-9353751"
+}, 
+
+{
+   "id": "9349675",
+   "teams": [{
+      "team_id": "612",
+      "team_name": "Англия",
+      "team_image": "PR5881.png"
+   }, {
+      "team_id": "19749",
+      "team_name": "Сенегал",
+      "team_image": "PR9749.png"
+   }],
+   "odds": [1.53, 3.90, 7.90],
+   "play_date": "04.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/england-senegal-9349675"
+}, 
+
+{
+   "id": "9357838",
+   "teams": [{
+      "team_id": "14555",
+      "team_name": "Япония",
+      "team_image": "PR4555.png"
+   }, {
+      "team_id": "30",
+      "team_name": "Хорватия",
+      "team_image": "PR5905.png"
+   }],
+   "odds": [3.90, 3.30, 2.10],
+   "play_date": "05.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/japan-croatia-9357838"
+}, 
+
+{
+   "id": "9357841",
+   "teams": [{
+      "team_id": "19732",
+      "team_name": "Марокко",
+      "team_image": "PR9732.png"
+   }, {
+      "team_id": "1169",
+      "team_name": "Испания",
+      "team_image": "PR5883.png"
+   }],
+   "odds": [7.00, 3.95, 1.57],
+   "play_date": "06.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/morocco-spain-9357841"
+}, 
+
+/// 2 match
+{
+   "id": "9361611",
+   "teams": [{
+      "team_id": "14535",
+      "team_name": "Бразилия",
+      "team_image": "PR4535.png"
+   }, {
+      "team_id": "14511",
+      "team_name": "Республика Корея",
+      "team_image": "PR4511.png"
+   }],
+   "odds": [1.27, 6.10, 12.50],
+   "play_date": "05.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/brazil-korea-republic-9361611"
+}, 
+
+{
+   "id": "9361610",
+   "teams": [{
+      "team_id": "4649",
+      "team_name": "Португалия",
+      "team_image": "PR5973.png"
+   }, {
+      "team_id": "4868",
+      "team_name": "Швейцария",
+      "team_image": "PR5858.png"
+   }],
+   "odds": [1.91, 3.40, 4.60],
+   "play_date": "06.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/portugal-switzerland-9361610"
+},
+
+{
+   "id": "9349673",
+   "teams": [{
+      "team_id": "23114",
+      "team_name": "Нидерланды",
+      "team_image": "PR5960.png"
+   }, {
+      "team_id": "14509",
+      "team_name": "США",
+      "team_image": "PR4509.png"
+   }],
+   "odds": [2.00, 3.30, 4.50],
+   "play_date": "03.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/netherlands-usa-9349673"
+}, 
+
+
+
+{
+   "id": "9353742",
+   "teams": [{
+      "team_id": "14478",
+      "team_name": "Аргентина",
+      "team_image": "PR4478.png"
+   }, {
+      "team_id": "17748",
+      "team_name": "Австралия",
+      "team_image": "PR7748.png"
+   }],
+   "odds": [1.22, 6.80, 17.50],
+   "play_date": "03.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/argentina-australia-9353742"
+}, 
+
+{
+   "id": "9353751",
+   "teams": [{
+      "team_id": "3587",
+      "team_name": "Франция",
+      "team_image": "PR5888.png"
+   }, {
+      "team_id": "3853",
+      "team_name": "Польша",
+      "team_image": "PR5970.png"
+   }],
+   "odds": [1.28, 5.60, 12.50],
+   "play_date": "04.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/france-poland-9353751"
+}, 
+
+{
+   "id": "9349675",
+   "teams": [{
+      "team_id": "612",
+      "team_name": "Англия",
+      "team_image": "PR5881.png"
+   }, {
+      "team_id": "19749",
+      "team_name": "Сенегал",
+      "team_image": "PR9749.png"
+   }],
+   "odds": [1.53, 3.90, 7.90],
+   "play_date": "04.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/england-senegal-9349675"
+}, 
+
+{
+   "id": "9357838",
+   "teams": [{
+      "team_id": "14555",
+      "team_name": "Япония",
+      "team_image": "PR4555.png"
+   }, {
+      "team_id": "30",
+      "team_name": "Хорватия",
+      "team_image": "PR5905.png"
+   }],
+   "odds": [3.90, 3.30, 2.10],
+   "play_date": "05.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/japan-croatia-9357838"
+}, 
+
+{
+   "id": "9357841",
+   "teams": [{
+      "team_id": "19732",
+      "team_name": "Марокко",
+      "team_image": "PR9732.png"
+   }, {
+      "team_id": "1169",
+      "team_name": "Испания",
+      "team_image": "PR5883.png"
+   }],
+   "odds": [7.00, 3.95, 1.57],
+   "play_date": "06.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/morocco-spain-9357841"
+}, 
+
+/// 2 match
+{
+   "id": "9361611",
+   "teams": [{
+      "team_id": "14535",
+      "team_name": "Бразилия",
+      "team_image": "PR4535.png"
+   }, {
+      "team_id": "14511",
+      "team_name": "Республика Корея",
+      "team_image": "PR4511.png"
+   }],
+   "odds": [1.27, 6.10, 12.50],
+   "play_date": "05.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/brazil-korea-republic-9361611"
+}, 
+
+{
+   "id": "9361610",
+   "teams": [{
+      "team_id": "4649",
+      "team_name": "Португалия",
+      "team_image": "PR5973.png"
+   }, {
+      "team_id": "4868",
+      "team_name": "Швейцария",
+      "team_image": "PR5858.png"
+   }],
+   "odds": [1.91, 3.40, 4.60],
+   "play_date": "06.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/portugal-switzerland-9361610"
+}, 
+
+/// 2 match off
+
+
+{
+   "id": "9357841",
+   "teams": [{
+      "team_id": "19732",
+      "team_name": "Марокко",
+      "team_image": "PR9732.png"
+   }, {
+      "team_id": "1169",
+      "team_name": "Испания",
+      "team_image": "PR5883.png"
+   }],
+   "odds": [7.00, 3.95, 1.57],
+   "play_date": "06.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/morocco-spain-9357841"
+}, 
+
+
+
+{
+   "id": "9357838",
+   "teams": [{
+      "team_id": "14555",
+      "team_name": "Япония",
+      "team_image": "PR4555.png"
+   }, {
+      "team_id": "30",
+      "team_name": "Хорватия",
+      "team_image": "PR5905.png"
+   }],
+   "odds": [3.90, 3.30, 2.10],
+   "play_date": "05.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/japan-croatia-9357838"
+}, 
+
+{
+   "id": "9349675",
+   "teams": [{
+      "team_id": "612",
+      "team_name": "Англия",
+      "team_image": "PR5881.png"
+   }, {
+      "team_id": "19749",
+      "team_name": "Сенегал",
+      "team_image": "PR9749.png"
+   }],
+   "odds": [1.53, 3.90, 7.90],
+   "play_date": "04.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/england-senegal-9349675"
+}, 
+
+{
+   "id": "9353751",
+   "teams": [{
+      "team_id": "3587",
+      "team_name": "Франция",
+      "team_image": "PR5888.png"
+   }, {
+      "team_id": "3853",
+      "team_name": "Польша",
+      "team_image": "PR5970.png"
+   }],
+   "odds": [1.28, 5.60, 12.50],
+   "play_date": "04.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/france-poland-9353751"
+}, 
+
+{
+   "id": "9353742",
+   "teams": [{
+      "team_id": "14478",
+      "team_name": "Аргентина",
+      "team_image": "PR4478.png"
+   }, {
+      "team_id": "17748",
+      "team_name": "Австралия",
+      "team_image": "PR7748.png"
+   }],
+   "odds": [1.22, 6.80, 17.50],
+   "play_date": "03.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/argentina-australia-9353742"
+}, 
+
+{
+   "id": "9349673",
+   "teams": [{
+      "team_id": "23114",
+      "team_name": "Нидерланды",
+      "team_image": "PR5960.png"
+   }, {
+      "team_id": "14509",
+      "team_name": "США",
+      "team_image": "PR4509.png"
+   }],
+   "odds": [2.00, 3.30, 4.50],
+   "play_date": "03.12.2022",
+   "play_time": "18:00",
+   "link": "https://pm.by/ru/events/netherlands-usa-9349673"
+}, 
+
+/// 2 match
+{
+   "id": "9361611",
+   "teams": [{
+      "team_id": "14535",
+      "team_name": "Бразилия",
+      "team_image": "PR4535.png"
+   }, {
+      "team_id": "14511",
+      "team_name": "Республика Корея",
+      "team_image": "PR4511.png"
+   }],
+   "odds": [1.27, 6.10, 12.50],
+   "play_date": "05.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/brazil-korea-republic-9361611"
+}, 
+
+{
+   "id": "9361610",
+   "teams": [{
+      "team_id": "4649",
+      "team_name": "Португалия",
+      "team_image": "PR5973.png"
+   }, {
+      "team_id": "4868",
+      "team_name": "Швейцария",
+      "team_image": "PR5858.png"
+   }],
+   "odds": [1.91, 3.40, 4.60],
+   "play_date": "06.12.2022",
+   "play_time": "22:00",
+   "link": "https://pm.by/ru/events/portugal-switzerland-9361610"
+}, 
+
+/// 2 match off
+ 
+
+
+];

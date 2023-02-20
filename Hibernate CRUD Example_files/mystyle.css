@@ -1,0 +1,448 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#adArea {
+  background: #50F000;
+  cursor: pointer;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#border {
+  -webkit-box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+}
+
+p {
+  display: block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+/*/////////////////////*/
+
+.rhomb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* transform: rotate(45deg);
+  transform-origin: 50% 50%; */
+  position: absolute;
+
+  background-color: #000;
+}
+
+.rhomb .pic {
+  width: 100%;
+  height: 100%;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* border: 1px solid #eee; */
+
+  /* transform: scale(1.1) rotate(-45deg); */
+}
+
+/*
+.rhomb img {
+  transform: rotate(-45deg);
+  width: calc(141% - 8.28px);
+  height: calc(141% - 8.28px);
+  flex-shrink: 0;
+}*/
+
+.rhomb>p {
+  position: absolute;
+  /* transform: rotate(-45deg); */
+}
+
+#a1 {
+  -webkit-transform: translateY(-50%) scaleX(-1);
+  -moz-transform: translateY(-50%) scaleX(-1);
+  -o-transform: translateY(-50%) scaleX(-1);
+  transform: translateY(-50%) scaleX(-1);
+
+  top: 50%;
+}
+
+#a2 {
+  right: 0px;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+.arrow {
+  width: 14px;
+  height: 14px;
+}
+
+.arrowCircle:hover {
+  background-color: #13A24D;
+  -webkit-box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.0);
+  -moz-box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.0);
+  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.0);
+}
+
+.arrowCircle,
+.st0 {
+  transition: all 150ms ease-out;
+}
+
+.arrowCircle:hover .st0 {
+  fill: white !important;
+}
+
+.hasOpen {
+  /* border: 1px solid red; */
+}
+
+.arrowCircle {
+  margin-left: 8px;
+  margin-right: 8px;
+  background-color: white;
+  border-radius: 100px;
+  padding: 8px;
+  -webkit-box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.12);
+}
+
+#logo {
+  width: 80px;
+  height: 30px;
+  padding: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.12); 
+  background: url('images/logo.svg') center center / 90% no-repeat #000;
+}
+
+.prod {
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  top: -35px;
+}
+
+
+.botLeftBorderRound {
+  border-bottom-left-radius: 6px;
+}
+
+.botRightBorderRound {
+  border-bottom-right-radius: 6px;
+}
+
+.block {
+  box-sizing: border-box;
+  /* border: 5px solid #f51111; */
+  /*background-color: white;*/
+  /*box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);*/
+}
+
+.block * {
+  box-sizing: border-box;
+}
+
+#loaderCont {
+  /* -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);*/
+}
+
+#loader {
+  width: 166px;
+  height: 172px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -83px 0 0 -86px;
+
+  background-image: url('images/loader.png');
+}
+
+@-webkit-keyframes rotating
+
+/* Safari and Chrome */
+  {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.rotating {
+  -webkit-animation: rotating 2s linear infinite;
+  -moz-animation: rotating 2s linear infinite;
+  -ms-animation: rotating 2s linear infinite;
+  -o-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite;
+}
+
+
+/*/////////////////////*/
+
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.center {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.wrapper {
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+#pointer {
+  left: -25px;
+  top: -25px;
+}
+
+.abs {
+  position: absolute;
+}
+
+.rct {
+  width: 728px;
+  height: 90px;
+  position: absolute;
+}
+
+.opacity0 {
+  opacity: 0;
+}
+
+.opacity1 {
+  opacity: 1;
+}
+
+.zi1 {
+  z-index: 800;
+}
+
+.zi2 {
+  z-index: 900;
+}
+
+.zi5 {
+  z-index: 5000;
+}
+
+.zi6 {
+  z-index: 6000;
+}
+
+.zi7 {
+  z-index: 7000 !important;
+}
+
+.zi8 {
+  z-index: 8000 !important;
+}
+
+.zi9 {
+  z-index: 9000 !important;
+}
+
+.zi95 {
+  z-index: 9500 !important;
+}
+
+.zi10 {
+  z-index: 10000 !important;
+}
+
+.zIndex99998 {
+  z-index: 99998;
+}
+
+.zIndex99999 {
+  z-index: 99999;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.noEvents {
+  pointer-events: none;
+}
+
+.noVis {
+  visibility: none;
+}
+
+.noDisplay {
+  display: none;
+}
+
+
+.teamInfo {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #50F000;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.teamA p,
+.teamB p {
+  display: inline-block;
+  vertical-align: middle;
+}
+.teamB {}
+
+.teamFlag {}
+.teamName {}
+
+.teamVs {
+  margin: 0px auto;
+  width: 11px;
+  height: 11px;
+  background: url(images/football.png) center center / contain no-repeat;
+  -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+
+.gameSchedule {
+	padding-top: 5px;
+	font-size: 9px;
+	text-transform: uppercase;
+	color: #dbdbdb;
+	text-align: center;
+	line-height: 1.2;
+}
+
+.ctaButton {
+
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+#gameOdds {
+	text-align: center;
+}
+
+#gameOdds > div {
+	display: inline-block;
+	padding: 5px 8px;
+	border-radius: 3px;
+	border: 1px solid #484848;
+	margin: 3px;
+	background-color: #000;
+	color: #FFFF;
+}
+
+#gameOdds > div:hover {
+	background-color: #f8ff13;
+	color: #50F000;
+}
+
+
+
+#ctaButton {
+	right: 50%;
+	bottom: 30px;
+    padding: 0 15px;
+    font-size: 14px;
+    line-height: 30px;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000;
+	background-color: #FFFF;
+	display: inline-block;
+	width: 140px;
+	text-align: center;
+	margin-right: -70px;
+}
+
+#adArea:hover #ctaButton {
+	background-color: #50F000;
+}
+
+/* show product */
+#gameInfo {
+	padding-top: -2px;
+}
+
+#gameInfo .teamVs {
+	width: 14px;
+	height: 14px;
+}
+
+#teamA, #teamB {
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+#teamA > div, #teamB > div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.teamFlag {
+	width: 24px;
+	height: 24px;
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+	margin-right: 5px;
+}
+
+#gameSchedule {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+#gameSchedule > div {
+	display: inline-block;
+	color: #8e8e8e;
+}
