@@ -14,10 +14,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-/**
- *
- * @author 19613
- */
+
 public class JavaApplication1 {
 
     /**
@@ -47,8 +44,9 @@ public class JavaApplication1 {
             System.out.println(g.getStatus());
             
             s.saveOrUpdate(g);
+            
         }
         s.close();
-        sf.close();
+     sf.close();
     }
 }
